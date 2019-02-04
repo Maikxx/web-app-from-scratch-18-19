@@ -1,15 +1,25 @@
 import 'babel-polyfill'
 import { Store } from './utils/store'
 import { createCharacterButton } from './components/CharacterButton'
-import { fetchCharacters } from './fetchers/fetchCharacters'
 import { createPageHook } from './components/PageHook'
 import { sortCharactersByName } from './sorters/sortCharactersByName'
 import { createPageHeader } from './components/PageHeader'
+import { fetchCharacters } from './fetchers/character'
+import { Router } from './utils/Router'
 
 (async() => {
     const store = new Store()
+    const router = new Router()
     const mainElement = document.querySelector('main') as HTMLMainElement
     const pageHook = createPageHook()
+
+    router.navigate()
+
+    router.addRoute(/characters/, () => {
+        console.log('Characters')
+    })
+
+    router.watch()
 
     let characters
 

@@ -1,6 +1,6 @@
 import { Character } from '../types/Character'
 import { capitalize } from '../utils/capitalize'
-import { setNewRoute } from '../utils/routing'
+import { setNewRoute } from '../utils/Router'
 import { CharacterDetailView } from '../views/CharacterDetailView'
 import { Store } from '../utils/store'
 
