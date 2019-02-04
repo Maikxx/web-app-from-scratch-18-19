@@ -1,17 +1,17 @@
 import 'babel-polyfill'
 import { Store } from './utils/store'
-import { createCharacterButton } from './components/CharacterButton'
-import { createPageHook } from './components/PageHook'
+import { createCharacterButton } from './components/Character/CharacterButton'
 import { sortCharactersByName } from './sorters/sortCharactersByName'
-import { createPageHeader } from './components/PageHeader'
 import { fetchCharacters } from './fetchers/character'
 import { Router } from './utils/Router'
+import { PageHeader } from './components/Chrome/PageHeader'
+import { View } from './components/Core/View'
 
 (async() => {
     const store = new Store()
     const router = new Router()
     const mainElement = document.querySelector('main') as HTMLMainElement
-    const pageHook = createPageHook()
+    const view = new View().render()
 
     router.navigate()
 
@@ -31,14 +31,14 @@ import { Router } from './utils/Router'
     }
 
     if (characters && characters.length > 0) {
-        const listElement = document.createElement('ol')
-        createPageHeader('Game of Thrones Characters', mainElement)
+        new PageHeader(mainElement, { title: `Game of Thrones Characters` }).render()
 
+        const listElement = document.createElement('ol')
         characters
             .sort(sortCharactersByName)
-            .forEach(createCharacterButton(store, pageHook, listElement))
+            .forEach(createCharacterButton(store, view, listElement))
 
         mainElement.appendChild(listElement)
-        mainElement.appendChild(pageHook)
+        mainElement.appendChild(view)
     }
 })()

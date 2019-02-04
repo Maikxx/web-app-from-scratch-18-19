@@ -1,8 +1,8 @@
-import { Character } from '../types/Character'
-import { capitalize } from '../utils/capitalize'
-import { setNewRoute } from '../utils/Router'
-import { CharacterDetailView } from '../views/CharacterDetailView'
-import { Store } from '../utils/store'
+import { Character } from '../../types/Character'
+import { capitalize } from '../../utils/capitalize'
+import { setNewRoute } from '../../utils/Router'
+import { CharacterDetailView } from '../../views/CharacterDetailView'
+import { Store } from '../../utils/store'
 
 export function createCharacterButton(store: Store, hook: HTMLElement, listElement: HTMLElement) {
     return function (character: Character) {
