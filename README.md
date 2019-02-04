@@ -36,7 +36,8 @@ To build the client run: `yarn build-client` or `npm run build-client`.
 
 ## Technologies used
 
-* TODO
+* [TypeScript](https://www.typescriptlang.org)
+* [Yarn](https://yarnpkg.com/en/)
 
 ## Data sources
 
