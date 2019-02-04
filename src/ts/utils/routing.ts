@@ -8,7 +8,3 @@ export function setNewRoute(payload: any, urlEndpoint: string) {
         urlToNavigateTo
     )
 }
-
-export function intitializeScripts() {
-
-}
