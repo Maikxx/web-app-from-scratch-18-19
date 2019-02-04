@@ -41,7 +41,7 @@ To build the client run: `yarn build-client` or `npm run build-client`.
 
 ## Data sources
 
-* TODO
+* [apioffireandice](https://anapioficeandfire.com/)
 
 ## Future enhancements
 
