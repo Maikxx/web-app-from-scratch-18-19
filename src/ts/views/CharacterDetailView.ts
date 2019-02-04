@@ -1,20 +1,29 @@
-import { Character, translatedKeys } from '../types/Character'
+import { translatedKeys } from '../types/Character'
+import { fetchCharacter } from '../fetchers/character'
 
 export async function CharacterDetailView(hook: HTMLElement) {
     const { url } = window.history.state
-    const data = await fetch(url)
-    const character = await data.json() as Character
+
+    let character
+    try {
+        character = await fetchCharacter(url)
+    } catch (error) {
+        console.error(error)
+        throw new Error(error)
+    }
 
     const titleElement = document.createElement('h2')
-    const sectionElement = document.createElement('section')
+    const listElement = document.createElement('ul')
+    listElement.classList.add('data-list')
 
     Object.entries(character).map(([ key, value ]) => {
-        if (!value || value.length === 0 || (Array.isArray(value) && !value[0])) {
+        if (!value || value.length === 0 || (Array.isArray(value) && !value[0]) || key === 'url' || key === 'name') {
             return
         }
 
+        const wrapperElement = document.createElement('li')
         const keyElement = document.createElement('h3')
-        const valueElement = document.createElement('span')
+        const valueElement = document.createElement('p')
 
         keyElement.innerText = translatedKeys[key]
 
@@ -38,14 +47,15 @@ export async function CharacterDetailView(hook: HTMLElement) {
             }
         }
 
-        sectionElement.appendChild(keyElement)
-        sectionElement.appendChild(valueElement)
+        wrapperElement.appendChild(keyElement)
+        wrapperElement.appendChild(valueElement)
+        listElement.appendChild(wrapperElement)
     })
 
     titleElement.innerText = character.name
 
     hook.appendChild(titleElement)
-    hook.appendChild(sectionElement)
+    hook.appendChild(listElement)
 }
 
 function createAchors(url: string, hook: HTMLElement) {

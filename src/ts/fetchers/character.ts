@@ -13,3 +13,13 @@ export async function fetchCharacters(): Promise<Character[]> {
         throw new Error(error)
     }
 }
+
+export async function fetchCharacter(url: string): Promise<Character> {
+    try {
+        const data = await fetch(url)
+        return data.json()
+    } catch (error) {
+        console.error(error)
+        throw new Error(error)
+    }
+}

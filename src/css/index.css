@@ -39,22 +39,28 @@ main ol li {
     cursor: pointer;
 }
 
-.nav-link:hover {
+.nav-link:hover,
+.nav-link:active {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
-.nav-link.active {
-    background-color: grey;
+.data-list {
+    margin-top: 12px;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
-.page > section {
+.data-list li {
+    width: 32%;
+}
+
+.data-list:not(:first-child) li {
     margin-top: 12px;
 }
 
-.page h3 {
+.data-list h3 {
     margin-bottom: 6px;
-}
-
-.page span + h3 {
-    margin-top: 12px;
 }
