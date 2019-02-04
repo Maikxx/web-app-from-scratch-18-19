@@ -1,22 +1,15 @@
-import { translatedKeys } from '../types/Character'
-import { fetchCharacter } from '../fetchers/character'
+import { translatedKeys, Character } from '../types/Character'
+import { fetchByUrl } from '../fetchers/generic'
 
 export async function CharacterDetailView(hook: HTMLElement) {
     const { url } = window.history.state
 
-    let character
-    try {
-        character = await fetchCharacter(url)
-    } catch (error) {
-        console.error(error)
-        throw new Error(error)
-    }
-
+    const character = await fetchByUrl<Character>(url)
     const titleElement = document.createElement('h2')
     const listElement = document.createElement('ul')
     listElement.classList.add('data-list')
 
-    Object.entries(character).map(([ key, value ]) => {
+    Object.entries(character).map(async ([ key, value ]) => {
         if (!value || value.length === 0 || (Array.isArray(value) && !value[0]) || key === 'url' || key === 'name') {
             return
         }
@@ -27,25 +20,8 @@ export async function CharacterDetailView(hook: HTMLElement) {
 
         keyElement.innerText = translatedKeys[key]
 
-        if (Array.isArray(value)) {
-            value.forEach((v, i) => {
-                if (v.includes('https://')) {
-                    createAchors(v, valueElement)
-                } else {
-                    if (i === 0) {
-                        valueElement.innerText = v
-                    } else {
-                        valueElement.innerText += `\n${v}`
-                    }
-                }
-            })
-        } else {
-            if (value.includes('https://')) {
-                createAchors(value, valueElement)
-            } else {
-                valueElement.innerText = value
-            }
-        }
+        const dataContent = await getDataContent(value)
+        valueElement.innerText = dataContent
 
         wrapperElement.appendChild(keyElement)
         wrapperElement.appendChild(valueElement)
@@ -58,9 +34,27 @@ export async function CharacterDetailView(hook: HTMLElement) {
     hook.appendChild(listElement)
 }
 
-function createAchors(url: string, hook: HTMLElement) {
-    const anchorElement = document.createElement('a') as HTMLAnchorElement
-    anchorElement.setAttribute('href', url)
-    anchorElement.innerText = url
-    hook.appendChild(anchorElement)
+async function getDataContent(value: string | string[]) {
+    if (Array.isArray(value)) {
+        const values = await Promise.all(value.map(async (textOrUrl, i) => {
+            if (textOrUrl.includes('https://')) {
+                return fetchName(textOrUrl)
+            } else {
+                return textOrUrl
+            }
+        }))
+
+        return values.join('\n')
+    } else {
+        if (value.includes('https://')) {
+            return fetchName(value)
+        } else {
+            return value
+        }
+    }
+
+    async function fetchName(url: string) {
+        const data = await fetchByUrl<any>(url)
+        return data.name
+    }
 }
