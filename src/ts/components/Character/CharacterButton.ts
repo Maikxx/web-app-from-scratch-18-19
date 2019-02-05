@@ -9,7 +9,9 @@ interface Props {
 }
 
 export class CharacterButton {
-    constructor(private props: Props) {}
+    constructor(private props: Props) {
+        this.render()
+    }
 
     public render() {
         const { character, hook } = this.props

@@ -1,5 +1,7 @@
 export class View {
-    constructor(private hook?: HTMLElement) {}
+    constructor(private hook?: HTMLElement) {
+        this.render()
+    }
 
     public render() {
         const view = document.createElement('section')

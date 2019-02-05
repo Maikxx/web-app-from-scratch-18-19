@@ -4,7 +4,9 @@ interface Props {
 }
 
 export class PageHeader {
-    constructor(private props: Props) {}
+    constructor(private props: Props) {
+        this.render()
+    }
 
     public render() {
         const { title, hook } = this.props

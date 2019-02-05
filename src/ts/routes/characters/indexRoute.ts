@@ -9,7 +9,6 @@ import { Router } from '../../components/Core/Router'
 export function handleCharacterIndexRoute(hook: HTMLElement, router: Router) {
     return async function() {
         resetHook(hook)
-        const view = new View().render()
         let characters
         try {
             characters = await fetchCharacters()
@@ -19,15 +18,15 @@ export function handleCharacterIndexRoute(hook: HTMLElement, router: Router) {
         }
 
         if (characters && characters.length > 0) {
-            new PageHeader({ hook, title: `Game of Thrones Characters` }).render()
+            new PageHeader({ hook, title: `Game of Thrones Characters` })
 
             const listElement = document.createElement('ol')
             characters
                 .sort(sortCharactersByName)
-                .forEach(character => new CharacterButton({ hook: listElement, router, character }).render())
+                .forEach(character => new CharacterButton({ hook: listElement, router, character }))
 
             hook.appendChild(listElement)
-            hook.appendChild(view)
+            new View(hook)
         }
     }
 }
