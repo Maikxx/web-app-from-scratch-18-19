@@ -31,7 +31,7 @@ export class CharacterButton {
         hook.appendChild(listItemElement)
     }
 
-    private handleLinkClickEvent = (event: MouseEvent) => {
+    private handleLinkClickEvent = () => {
         const { character, router } = this.props
         const { url } = character
         const index = url.slice(url.lastIndexOf('/') + 1)
