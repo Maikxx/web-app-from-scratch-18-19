@@ -1,5 +1,18 @@
 # Web App From Scratch @cmda-minor-web 18-19 Maikel van Veen
 
+## Table of Contents
+
+1. [Live demo](#live-demo)
+2. [Description](#description)
+3. [Installation](#installation)
+    1. [Pre-install](#pre-install)
+    2. [Install](#install)
+4. [Features](#features)
+5. [Technologies used](#technologies-used)
+6. [Data recourses](#data-recourses)
+7. [Future enhancements](#future-enhancements)
+8. [License](#license)
+
 ## Live demo
 
 [Link](https://web-app-from-scratch.netlify.com/)
@@ -8,11 +21,7 @@
 
 A very nice boilerplate to create your own web apps without using frameworks like React or Vue.
 
-<!-- Add a nice image here at the end of the week, showing off your shiny frontend 📸 -->
-
-## Table of Contents
-
-* TODO
+TODO: Add image
 
 ## Installation
 
