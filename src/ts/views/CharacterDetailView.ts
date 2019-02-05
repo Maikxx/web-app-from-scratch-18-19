@@ -10,7 +10,7 @@ export async function CharacterDetailView(hook: HTMLElement) {
     listElement.classList.add('data-list')
 
     Object.entries(character).map(async ([ key, value ]) => {
-        if (!value || value.length === 0 || (Array.isArray(value) && !value[0]) || key === 'url' || key === 'name') {
+        if (shouldHideProperty(key, value)) {
             return
         }
 
@@ -32,6 +32,13 @@ export async function CharacterDetailView(hook: HTMLElement) {
 
     hook.appendChild(titleElement)
     hook.appendChild(listElement)
+}
+
+function shouldHideProperty(key: string, value: string) {
+    return !value
+        || value.length === 0
+        || (Array.isArray(value) && !value[0])
+        || key === 'url' || key === 'name'
 }
 
 async function getDataContent(value: string | string[]) {
