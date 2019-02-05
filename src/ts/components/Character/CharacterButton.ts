@@ -1,6 +1,6 @@
 import { Character } from '../../types/Character'
 import { capitalize } from '../../utils/capitalize'
-import { Router } from '../../utils/Router'
+import { Router } from '../Core/Router'
 
 interface Props {
     router: Router

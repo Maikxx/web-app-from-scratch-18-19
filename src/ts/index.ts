@@ -1,5 +1,5 @@
 import 'babel-polyfill'
-import { Router } from './utils/Router'
+import { Router } from './components/Core/Router'
 import { routes } from './routes'
 import { handleCharacterIndexRoute } from './routes/characters/indexRoute'
 import { handleCharacterDetailRoute } from './routes/characters/detailRoute'

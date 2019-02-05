@@ -4,7 +4,7 @@ import { PageHeader } from '../../components/Chrome/PageHeader'
 import { sortCharactersByName } from '../../sorters/sortCharactersByName'
 import { CharacterButton } from '../../components/Character/CharacterButton'
 import { View } from '../../components/Core/View'
-import { Router } from '../../utils/Router'
+import { Router } from '../../components/Core/Router'
 
 export function handleCharacterIndexRoute(hook: HTMLElement, router: Router) {
     return async function() {
