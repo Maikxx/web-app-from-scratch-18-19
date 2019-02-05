@@ -15,6 +15,7 @@ import { CharacterDetailView } from './views/CharacterDetailView'
     router.redirect()
 
     router.addRoute(/characters$/, async () => {
+        mainElement.innerHTML = ''
         let characters
 
         try {
@@ -39,8 +40,6 @@ import { CharacterDetailView } from './views/CharacterDetailView'
 
     router.addRoute(/characters\/(.*)/, async (args?: any) => {
         mainElement.innerHTML = ''
-        console.log(mainElement.innerHTML)
-        console.log(mainElement)
         new PageHeader({ hook: mainElement, title: `Character detail` }).render()
         await CharacterDetailView(mainElement, args)
     })
