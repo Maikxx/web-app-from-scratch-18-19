@@ -1,10 +1,8 @@
 import { translatedKeys, Character } from '../types/Character'
 import { fetchByUrl } from '../fetchers/generic'
 
-export async function CharacterDetailView(hook: HTMLElement) {
-    const { url } = window.history.state
-
-    const character = await fetchByUrl<Character>(url)
+export async function CharacterDetailView(hook: HTMLElement, id: number) {
+    const character = await fetchByUrl<Character>(`https://anapioficeandfire.com/api/characters/${id}`)
     const titleElement = document.createElement('h2')
     const listElement = document.createElement('ul')
     listElement.classList.add('data-list')

@@ -1,18 +1,19 @@
 interface Props {
     title: string
+    hook: HTMLElement
 }
 
 export class PageHeader {
-    constructor(private hook: HTMLElement, private props: Props) {}
+    constructor(private props: Props) {}
 
     public render() {
-        const { title } = this.props
+        const { title, hook } = this.props
         const headerElement = document.createElement('header')
         const headingElement = document.createElement('h1')
 
         headingElement.innerText = title
         headerElement.appendChild(headingElement)
 
-        this.hook.appendChild(headerElement)
+        hook.appendChild(headerElement)
     }
 }

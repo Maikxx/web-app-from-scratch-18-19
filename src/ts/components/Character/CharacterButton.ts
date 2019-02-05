@@ -1,12 +1,19 @@
 import { Character } from '../../types/Character'
 import { capitalize } from '../../utils/capitalize'
-import { setNewRoute } from '../../utils/Router'
-import { CharacterDetailView } from '../../views/CharacterDetailView'
-import { Store } from '../../utils/store'
+import { Router } from '../../utils/Router'
 
-export function createCharacterButton(store: Store, hook: HTMLElement, listElement: HTMLElement) {
-    return function (character: Character) {
-        const { name, url } = character
+interface Props {
+    router: Router
+    character: Character
+    hook: HTMLElement
+}
+
+export class CharacterButton {
+    constructor(private props: Props) {}
+
+    public render() {
+        const { character, hook } = this.props
+        const { name } = character
 
         if (!name || !name.length) {
             return
@@ -18,22 +25,17 @@ export function createCharacterButton(store: Store, hook: HTMLElement, listEleme
         linkElement.classList.add('nav-link')
         linkElement.innerText = capitalize(name)
 
-        linkElement.addEventListener('click', handleLinkClickEvent(store, hook, url))
+        linkElement.addEventListener('click', this.handleLinkClickEvent)
 
         listItemElement.appendChild(linkElement)
-        listElement.appendChild(listItemElement)
+        hook.appendChild(listItemElement)
     }
-}
 
-function handleLinkClickEvent(store: Store, hook: HTMLElement, url: string) {
-    return function (event: MouseEvent) {
+    private handleLinkClickEvent = (event: MouseEvent) => {
+        const { character, router } = this.props
+        const { url } = character
         const index = url.slice(url.lastIndexOf('/') + 1)
 
-        setNewRoute({ url }, `character/${index}`)
-
-        if (store.get('url') !== window.location.href) {
-            hook.innerHTML = ''
-            CharacterDetailView(hook)
-        }
+        router.redirect(`/characters/${index}`)
     }
 }

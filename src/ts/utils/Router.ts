@@ -1,6 +1,6 @@
 export interface Route {
     regex: any
-    resolver: () => void
+    resolver: (args?: any) => void
 }
 
 export interface RouterOptions {
@@ -70,12 +70,12 @@ export class Router {
     public check(defaultPath?: string) {
         const path = defaultPath || this.getPath()
 
-        this.routes.forEach((route, i) => {
-            const match = path.match(this.routes[i].regex)
+        this.routes.forEach(route => {
+            const match = path.match(route.regex)
 
             if (match) {
                 match.shift()
-                this.routes[i].resolver.apply({}, match)
+                route.resolver.apply({}, match)
             }
         })
     }
@@ -94,7 +94,7 @@ export class Router {
         this.interval = setInterval(checker, 50)
     }
 
-    public navigate(path: string = '') {
+    public redirect(path: string = '') {
         const url = `${this.base}${this.trimUrl(path)}`
         history.pushState(null, url, url)
     }
