@@ -41,7 +41,7 @@ export class Router {
             .replace(/\/$/, '')
     }
 
-    public addRoute(regex: any, resolver: () => void) {
+    public addRoute(regex: any, resolver: any) {
         if (typeof regex === 'function') {
             resolver = regex
             regex = ''
@@ -98,15 +98,4 @@ export class Router {
         const url = `${this.base}${this.trimUrl(path)}`
         history.pushState(null, url, url)
     }
-}
-
-export function setNewRoute(payload: any, urlEndpoint: string) {
-    const { origin } = window.location
-    const urlToNavigateTo = `${origin}/${urlEndpoint}`
-
-    window.history.pushState(
-        payload,
-        urlToNavigateTo,
-        urlToNavigateTo
-    )
 }
