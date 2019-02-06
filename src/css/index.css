@@ -64,3 +64,20 @@ main ol li {
 .data-list h3 {
     margin-bottom: 6px;
 }
+
+.data-list__text {
+    display: block;
+}
+
+.link {
+    display: block;
+    font-size: inherit;
+    color: #4F8CC4;
+    transition: .2s color ease;
+    cursor: pointer;
+}
+
+.link:hover {
+    text-decoration: underline;
+    color: #5E8FC9;
+}

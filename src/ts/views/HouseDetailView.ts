@@ -1,7 +1,7 @@
-import { translatedKeys, Character } from '../types/Character'
 import { fetchByUrl } from '../fetchers/generic'
 import { PageHeader } from '../components/Chrome/PageHeader'
 import { Router } from '../components/Core/Router'
+import { House, translatedKeys } from '../types/House'
 
 interface Props {
     hook: HTMLElement
@@ -15,15 +15,15 @@ interface FetchData {
     url: string
 }
 
-export class CharacterDetailView {
+export class HouseDetailView {
     constructor(private props: Props) {
         const { id } = this.props
 
         ; (async () => {
-            const url = `https://anapioficeandfire.com/api/characters/${id}`
+            const url = `https://anapioficeandfire.com/api/houses/${id}`
             try {
-                const character = await fetchByUrl<Character>(url)
-                this.render(character)
+                const house = await fetchByUrl<House>(url)
+                this.render(house)
             } catch (error) {
                 console.error(error)
                 throw new Error(error)
@@ -31,15 +31,15 @@ export class CharacterDetailView {
         })()
     }
 
-    public render(character: Character) {
+    public render(house: House) {
         const { hook } = this.props
 
-        new PageHeader({ hook, title: character.name })
+        new PageHeader({ hook, title: house.name })
 
         const listElement = document.createElement('ul')
         listElement.classList.add('data-list')
 
-        Object.entries(character).map(async ([ key, value ]) => {
+        Object.entries(house).map(async ([ key, value ]) => {
             if (this.shouldHideProperty(key, value)) {
                 return
             }
@@ -92,7 +92,10 @@ export class CharacterDetailView {
 
                     hook.appendChild(buttonElement)
                 } else {
-                    hook.innerText = textOrUrl
+                    const spanElement = document.createElement('span')
+                    spanElement.classList.add('data-list__text')
+                    spanElement.innerText = textOrUrl
+                    hook.appendChild(spanElement)
                 }
             }
         }

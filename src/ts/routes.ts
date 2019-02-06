@@ -4,4 +4,10 @@ export const routes = {
         index: 'characters$',
         detail: 'characters\/(.*)',
     },
+    houses: {
+        detail: 'houses\/(.*)',
+    },
+    books: {
+        detail: 'books\/(.*)',
+    },
 }
