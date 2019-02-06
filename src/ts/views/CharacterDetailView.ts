@@ -7,6 +7,12 @@ interface Props {
     id: number
 }
 
+interface FetchData {
+    [key: string]: any
+    name: string
+    url: string
+}
+
 export class CharacterDetailView {
     constructor(private props: Props) {
         const { id } = this.props
@@ -78,7 +84,8 @@ export class CharacterDetailView {
         }
 
         async function fetchName(url: string) {
-            const data = await fetchByUrl<any>(url)
+            const data = await fetchByUrl<FetchData>(url)
+            console.log(data)
             return data.name
         }
     }
