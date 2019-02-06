@@ -7,6 +7,7 @@ export const translatedKeys = {
     mediaType: 'Media type',
     released: 'Released',
     characters: 'Characters',
+    povCharacters: 'POV characters',
 }
 
 export interface Book {
@@ -20,4 +21,5 @@ export interface Book {
     characters: string[]
     name: string
     url: string
+    povCharacters: string[]
 }
