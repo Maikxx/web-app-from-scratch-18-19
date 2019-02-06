@@ -1,4 +1,4 @@
-# Web App From Scratch @cmda-minor-web 18-19 Maikel van Veen
+# Web App From Scratch - Game of Thrones
 
 ## Table of Contents
 
