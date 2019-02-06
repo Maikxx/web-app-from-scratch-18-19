@@ -85,7 +85,6 @@ export class CharacterDetailView {
 
         async function fetchName(url: string) {
             const data = await fetchByUrl<FetchData>(url)
-            console.log(data)
             return data.name
         }
     }
