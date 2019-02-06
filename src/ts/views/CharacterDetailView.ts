@@ -1,5 +1,6 @@
 import { translatedKeys, Character } from '../types/Character'
 import { fetchByUrl } from '../fetchers/generic'
+import { PageHeader } from '../components/Chrome/PageHeader'
 
 interface Props {
     hook: HTMLElement
@@ -24,7 +25,9 @@ export class CharacterDetailView {
 
     public render(character: Character) {
         const { hook } = this.props
-        const titleElement = document.createElement('h2')
+
+        new PageHeader({ hook, title: character.name })
+
         const listElement = document.createElement('ul')
         listElement.classList.add('data-list')
 
@@ -47,9 +50,6 @@ export class CharacterDetailView {
             listElement.appendChild(wrapperElement)
         })
 
-        titleElement.innerText = character.name
-
-        hook.appendChild(titleElement)
         hook.appendChild(listElement)
     }
 
