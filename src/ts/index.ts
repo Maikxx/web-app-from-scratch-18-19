@@ -8,10 +8,14 @@ import { handleCharacterDetailRoute } from './routes/characters/detailRoute'
     const router = new Router()
     const mainElement = document.querySelector('main') as HTMLMainElement
 
-    router.redirect()
+    const currentPath = router.getPath()
+    const redirectTo = currentPath
+        ? currentPath
+        : '/characters'
+
+    router.redirect(redirectTo)
     router.addRoute(new RegExp(routes.characters.index), handleCharacterIndexRoute(mainElement, router))
     router.addRoute(new RegExp(routes.characters.detail), handleCharacterDetailRoute(mainElement))
-
     router.watch()
-    router.redirect(`/characters`)
+    router.check()
 })()

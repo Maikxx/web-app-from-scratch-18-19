@@ -15,7 +15,7 @@ export class Router {
     constructor(options?: RouterOptions) {
         this.base = options && options.base
             ? `/${this.trimUrl(options.base)}/`
-            : '/'
+            : `/`
     }
 
     public getPath() {
