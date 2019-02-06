@@ -62,20 +62,18 @@ export class CharacterDetailView {
 
     private async getDataContent(value: string | string[]) {
         if (Array.isArray(value)) {
-            const values = await Promise.all(value.map(async (textOrUrl, i) => {
-                if (textOrUrl.includes('https://')) {
-                    return fetchName(textOrUrl)
-                } else {
-                    return textOrUrl
-                }
-            }))
+            const values = await Promise.all(value.map(getContentValue))
 
             return values.join('\n')
         } else {
-            if (value.includes('https://')) {
-                return fetchName(value)
+            return getContentValue(value)
+        }
+
+        async function getContentValue(textOrUrl: string) {
+            if (textOrUrl.includes('https://')) {
+                return fetchName(textOrUrl)
             } else {
-                return value
+                return textOrUrl
             }
         }
 
