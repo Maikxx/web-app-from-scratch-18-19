@@ -10,8 +10,7 @@
 4. [Features](#features)
 5. [Technologies used](#technologies-used)
 6. [Data recourses](#data-recourses)
-7. [Future enhancements](#future-enhancements)
-8. [License](#license)
+7. [License](#license)
 
 ## Live demo
 
@@ -41,7 +40,15 @@ To build the client run: `yarn build-client` or `npm run build-client`.
 
 ## Features
 
-* TODO
+- [x] Render a list of characters from an api.
+- [x] Contains a custom-made router.
+- [x] Enables routing from the list to the detail page of that character.
+- [x] Enables routing from the detail page of a character to related detail pages (like books and siblings).
+- [x] React like coding experience.
+- [x] Fully made in TypeScript with where possible good typings.
+- [ ] A semi-decent looking application.
+- [ ] A custom-made shadow-DOM and/or templating engine.
+- [ ] Multiple apis.
 
 ## Technologies used
 
@@ -56,18 +63,6 @@ To build the client run: `yarn build-client` or `npm run build-client`.
 ## Data sources
 
 * [apioffireandice](https://anapioficeandfire.com/)
-
-## Features
-
-- [x] Render a list of characters from an api.
-- [x] Contains a custom-made router.
-- [x] Enables routing from the list to the detail page of that character.
-- [x] Enables routing from the detail page of a character to related detail pages (like books and siblings).
-- [x] React like coding experience.
-- [x] Fully made in TypeScript with where possible good typings.
-- [ ] A semi-decent looking application.
-- [ ] A custom-made shadow-DOM and/or templating engine.
-- [ ] Multiple apis.
 
 ## License
 
