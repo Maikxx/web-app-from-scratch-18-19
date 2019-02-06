@@ -44,8 +44,6 @@ export class BookDetailView {
                 return
             }
 
-            console.log(key)
-
             const wrapperElement = document.createElement('li')
             const keyElement = document.createElement('h3')
             const valueElement = document.createElement('p')
