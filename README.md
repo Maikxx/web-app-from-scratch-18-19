@@ -18,9 +18,11 @@
 
 ## Description
 
-A very nice boilerplate to create your own web apps without using frameworks like React or Vue.
+A Game of Thrones inspired application which allows the user to explore relations between characters, houses, books and more.
 
-TODO: Add image
+Characters overview page | Character detail page | House detail page | Book detail page
+:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
+![](docs/characters.png)  |  ![](docs/character.png) |  ![](docs/house.png) | ![](docs/book.png)
 
 ## Installation
 
@@ -49,6 +51,7 @@ To build the client run: `yarn build-client` or `npm run build-client`.
 - [ ] A semi-decent looking application.
 - [ ] A custom-made shadow-DOM and/or templating engine.
 - [ ] Multiple apis.
+- [ ] Has loading states.
 
 ## Technologies used
 
