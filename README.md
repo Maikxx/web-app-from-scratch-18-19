@@ -51,7 +51,7 @@ To build the client run: `yarn build-client` or `npm run build-client`.
 - [x] Enables routing from the list to the detail page of that character.
 - [x] Enables routing from the detail page of a character to related detail pages (like books and siblings).
 - [x] React like coding experience.
-- [x] Fully made in TypeScript with where possible good typings.
+- [x] Fully made in TypeScript with, where possible, good typings.
 - [ ] A semi-decent looking application.
 - [ ] A custom-made shadow-DOM and/or templating engine.
 - [ ] Multiple apis.
