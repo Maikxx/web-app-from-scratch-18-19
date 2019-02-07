@@ -20,9 +20,13 @@
 
 A Game of Thrones inspired application which allows the user to explore relations between characters, houses, books and more.
 
-Characters overview page | Character detail page | House detail page | Book detail page
-:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
-![](docs/characters.png)  |  ![](docs/character.png) |  ![](docs/house.png) | ![](docs/book.png)
+Characters overview page | Character detail page
+:-------------------------:|:-------------------------:
+![](docs/characters.png) | ![](docs/character.png)
+
+House detail page | Book detail page
+:-------------------------:|:-------------------------:
+![](docs/house.png) | ![](docs/book.png)
 
 ## Installation
 
