@@ -10,7 +10,7 @@ interface Props {
 }
 
 interface FetchData {
-    [key: string]: any
+    [key: string]: string | string[] | number
     name: string
     url: string
 }
