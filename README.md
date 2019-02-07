@@ -9,7 +9,7 @@
     2. [Install](#install)
 4. [Features](#features)
 5. [Technologies used](#technologies-used)
-6. [Data recourses](#data-recourses)
+6. [Data sourses](#data-sourses)
 7. [License](#license)
 
 ## Live demo
