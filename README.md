@@ -47,12 +47,12 @@ To build the client run: `yarn build-client` or `npm run build-client`.
 ## Features
 
 - [x] Render a list of characters from an api.
-- [x] Contains a custom-made router.
+- [x] Contains a custom-made router. 🕶️
 - [x] Enables routing from the list to the detail page of that character.
 - [x] Enables routing from the detail page of a character to related detail pages (like books and siblings).
-- [x] React like coding experience.
+- [x] React like coding experience. 🕶️
 - [x] Fully made in TypeScript with, where possible, good typings.
-- [ ] A semi-decent looking application.
+- [ ] A semi-decent looking application. 🙈
 - [ ] A custom-made shadow-DOM and/or templating engine.
 - [ ] Multiple apis.
 - [ ] Has loading states.
