@@ -55,7 +55,7 @@ To build the client run: `yarn build-client` or `npm run build-client`.
 - [ ] A semi-decent looking application. 🙈
 - [ ] A custom-made shadow-DOM and/or templating engine.
 - [ ] Multiple apis.
-- [ ] Has loading states.
+- [ ] Loading states.
 
 ## Technologies used
 
@@ -69,7 +69,7 @@ To build the client run: `yarn build-client` or `npm run build-client`.
 
 ## Data sources
 
-* [apioffireandice](https://anapioficeandfire.com/)
+* [apioffireandice](https://anapioficeandfire.com/) - A Game of Thrones api providing a lot of information about characters, books, houses and more.
 
 ## License
 
