@@ -8,6 +8,7 @@
     1. [Pre-install](#pre-install)
     2. [Install](#install)
 4. [Interaction diagram](#interaction-diagram)
+4. [Actor flow](#actor-flow)
 5. [Features](#features)
 6. [Technologies used](#technologies-used)
 7. [Data sources](#data-sources)
@@ -48,6 +49,10 @@ To build the client run: `yarn build-client` or `npm run build-client`.
 ## Interaction diagram
 
 ![Interaction diagram](docs/interaction-diagram.png)
+
+## Actor flow
+
+![Actor flow](docs/actor-flow.png)
 
 ## Features
 
