@@ -1,25 +1,5 @@
 # Web App From Scratch - Game of Thrones
 
-## Table of Contents
-
-1. [Live demo](#live-demo)
-2. [Description](#description)
-3. [Installation](#installation)
-    1. [Pre-install](#pre-install)
-    2. [Install](#install)
-4. [Interaction diagram](#interaction-diagram)
-4. [Actor flow](#actor-flow)
-5. [Features](#features)
-6. [Technologies used](#technologies-used)
-7. [Data sources](#data-sources)
-8. [License](#license)
-
-## Live demo
-
-[Link](https://web-app-from-scratch.netlify.com/)
-
-## Description
-
 A Game of Thrones inspired application which allows the user to explore relations between characters, houses, books and more. It aims to let users learn more about Game of Thrones.
 
 Characters overview page | Character detail page
@@ -29,6 +9,23 @@ Characters overview page | Character detail page
 House detail page | Book detail page
 :-------------------------:|:-------------------------:
 ![](docs/house.png) | ![](docs/book.png)
+
+## Table of Contents
+
+1. [Live demo](#live-demo)
+2. [Installation](#installation)
+    1. [Pre-install](#pre-install)
+    2. [Install](#install)
+3. [Interaction diagram](#interaction-diagram)
+4. [Actor flow](#actor-flow)
+5. [Features](#features)
+6. [Technologies used](#technologies-used)
+7. [Data sources](#data-sources)
+8. [License](#license)
+
+## Live demo
+
+[Link](https://web-app-from-scratch.netlify.com/)
 
 ## Installation
 
