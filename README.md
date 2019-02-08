@@ -70,6 +70,7 @@ To build the client run: `yarn build-client` or `npm run build-client`.
 ## Technologies used
 
 * [Autoprefixer](https://www.npmjs.com/package/autoprefixer)
+* [Babel polyfill](https://www.npmjs.com/package/babel-polyfill)
 * [BabelJS](https://babeljs.io)
 * [Concurrently](https://www.npmjs.com/package/concurrently)
 * [ParcelJS](https://parceljs.org)
