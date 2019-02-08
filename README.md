@@ -75,6 +75,12 @@ To build the client run: `yarn build-client` or `npm run build-client`.
 * [Wait-on](https://www.npmjs.com/package/wait-on)
 * [Yarn](https://yarnpkg.com/en/)
 
+## Patterns
+
+* Factories
+* Private class data
+* Observer
+
 ## Data sources
 
 * [apioffireandice](https://anapioficeandfire.com/) - A Game of Thrones api providing a lot of information about characters, books, houses and more. This API has no limits as to rates or authentication.
