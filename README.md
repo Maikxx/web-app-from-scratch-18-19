@@ -44,6 +44,10 @@ House detail page | Book detail page
 
 To build the client run: `yarn build-client` or `npm run build-client`.
 
+## Actor flow
+
+![Actor flow](docs/actor-flow.png)
+
 ## Features
 
 - [x] Render a list of characters from an api.
