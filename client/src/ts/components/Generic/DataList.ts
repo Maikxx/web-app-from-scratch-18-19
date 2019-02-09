@@ -1,21 +1,14 @@
 import { Router } from '../Core/Router'
 import { fetchByUrl } from '../../fetchers/generic'
 import { translatedTypes } from '../../translations/translatedTypes'
-import { Book } from '../../types/Book'
-import { Character } from '../../types/Character'
-import { House } from '../../types/House'
+import { DetailFetcherData } from '../../types/Fetchers'
+import { validateDate } from '../../utils/validateDate'
 
 interface Props {
-    data: Book | Character | House
+    data: DetailFetcherData
     hook: HTMLElement
     router: Router
-    shouldHidePropertyCheck?: (key: string, value: string | string[]) => boolean
-}
-
-interface FetchData {
-    [key: string]: string | string[] | number
-    name: string
-    url: string
+    shouldHidePropertyCheck?: (key: string, value: string | string[] | number) => boolean
 }
 
 export class DataList {
@@ -50,7 +43,7 @@ export class DataList {
         hook.appendChild(listElement)
     }
 
-    private shouldHideProperty(key: string, value: string | string[]) {
+    private shouldHideProperty(key: string, value: string | string[] | number) {
         const { shouldHidePropertyCheck } = this.props
 
         if (shouldHidePropertyCheck) {
@@ -58,12 +51,12 @@ export class DataList {
         }
 
         return !value
-            || value.length === 0
+            || (typeof value !== 'number' && value.length === 0)
             || (Array.isArray(value) && !value[0])
             || key === 'url' || key === 'name'
     }
 
-    private async renderDataContent(hook: HTMLElement, value: string | string[]) {
+    private async renderDataContent(hook: HTMLElement, value: string | string[] | number) {
         const { router } = this.props
 
         if (Array.isArray(value)) {
@@ -73,9 +66,9 @@ export class DataList {
         }
 
         function getContentValue(hook: HTMLElement) {
-            return async function(textOrUrl: string) {
-                if (textOrUrl.includes('https://')) {
-                    const data = await fetchByUrl<FetchData>(textOrUrl)
+            return async function(value: string | number) {
+                if (typeof value !== 'number' && value.includes('https://')) {
+                    const data = await fetchByUrl<DetailFetcherData>(value)
 
                     const buttonElement = document.createElement('button')
                     buttonElement.addEventListener('click', () => {
@@ -88,7 +81,11 @@ export class DataList {
 
                     hook.appendChild(buttonElement)
                 } else {
-                    hook.innerText = textOrUrl
+                    hook.innerText = typeof value !== 'number'
+                        ? validateDate(value)
+                            ? new Date(value).toLocaleDateString()
+                            : value
+                        : String(value)
                 }
             }
         }

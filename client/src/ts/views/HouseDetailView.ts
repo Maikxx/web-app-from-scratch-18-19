@@ -1,8 +1,5 @@
-import { fetchByUrl } from '../fetchers/generic'
-import { PageHeader } from '../components/Chrome/PageHeader'
 import { Router } from '../components/Core/Router'
-import { House } from '../types/House'
-import { DataList } from '../components/Generic/DataList'
+import { DetailView } from '../components/Generic/DetailView'
 
 interface Props {
     hook: HTMLElement
@@ -12,24 +9,13 @@ interface Props {
 
 export class HouseDetailView {
     constructor(private props: Props) {
-        const { id } = this.props
-
-        ; (async () => {
-            const url = `https://anapioficeandfire.com/api/houses/${id}`
-            try {
-                const house = await fetchByUrl<House>(url)
-                this.render(house)
-            } catch (error) {
-                console.error(error)
-                throw new Error(error)
-            }
-        })()
+        this.render()
     }
 
-    public render(house: House) {
-        const { hook, router } = this.props
+    public render() {
+        const { hook, router, id } = this.props
+        const url = `https://anapioficeandfire.com/api/characters/${id}`
 
-        new PageHeader({ hook, title: house.name })
-        new DataList({ hook, router, data: house })
+        new DetailView({ router, hook, url })
     }
 }
