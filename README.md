@@ -20,8 +20,10 @@ House detail page | Book detail page
 4. [Actor flow](#actor-flow)
 5. [Features](#features)
 6. [Technologies used](#technologies-used)
-7. [Data sources](#data-sources)
-8. [License](#license)
+7. [Patterns](#patterns)
+8. [Changelog](#changelog)
+9. [Data sources](#data-sources)
+10. [License](#license)
 
 ## Live demo
 
@@ -80,6 +82,10 @@ To build the client run: `yarn build-client` or `npm run build-client`.
 * Factories
 * Private class data
 * Observer
+
+## Changelog
+
+For a changelog, please refer to [this file](./CHANGELOG.md).
 
 ## Data sources
 
