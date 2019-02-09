@@ -6,7 +6,7 @@ import { handleCharacterDetailRoute } from './routes/characters/detailRoute'
 import { handleHouseDetailRoute } from './routes/houses/detailRoute'
 import { handleBookDetailRoute } from './routes/books/detailRoute'
 
-(async() => {
+(() => {
     const router = new Router()
     const mainElement = document.querySelector('main') as HTMLMainElement
 
