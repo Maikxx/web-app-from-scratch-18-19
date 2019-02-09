@@ -1,10 +1,10 @@
 import { fetchCharacters } from '../fetchers/character'
 import { Character } from '../types/Character'
 import { PageHeader } from '../components/Chrome/PageHeader'
-import { sortCharactersByName } from '../sorters/sortCharactersByName'
 import { CharacterButton } from '../components/Character/CharacterButton'
 import { View } from '../components/Core/View'
 import { Router } from '../components/Core/Router'
+import { sortByObjectKey } from '../sorters/sortByObjectKey'
 
 interface Props {
     hook: HTMLElement
@@ -35,7 +35,7 @@ export class CharacterMasterView {
 
             const listElement = document.createElement('ol')
             characters
-                .sort(sortCharactersByName)
+                .sort(sortByObjectKey<Character>('name'))
                 .forEach(character => new CharacterButton({ hook: listElement, router, character }))
 
             hook.appendChild(listElement)
