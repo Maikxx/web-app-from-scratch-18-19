@@ -85,7 +85,7 @@ To build the client run: `yarn build-client` or `npm run build-client`.
 
 ## Changelog
 
-For a changelog, please refer to [this file](./CHANGELOG.md).
+For a changelog, please refer to [this file](./docs/CHANGELOG.md).
 
 ## Data sources
 
