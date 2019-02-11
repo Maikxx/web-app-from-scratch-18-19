@@ -57,7 +57,7 @@ export class Router {
         this.routes.splice(urlIndex, 1)
     }
 
-    public resetRouter() {
+    public reset() {
         this.routes = []
         this.base = '/'
     }
