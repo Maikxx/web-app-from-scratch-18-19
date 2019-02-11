@@ -1,8 +1,8 @@
 import { translatedTypes } from '../../translations/translatedTypes'
 import { DetailFetcherData } from '../../types/Fetchers'
-import { validateDate } from '../../utils/validateDate'
 import { Fetcher } from '../Core/Fetcher'
 import Navigo from 'navigo'
+import { validateDate } from '../../utils/validators'
 
 interface Props {
     data: DetailFetcherData
