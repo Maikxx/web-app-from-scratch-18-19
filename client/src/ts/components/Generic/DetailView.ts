@@ -28,7 +28,7 @@ export class DetailView {
     public render(data: DetailFetcherData) {
         const { hook, router } = this.props
 
-        new PageHeader({ hook, title: data.name })
+        new PageHeader({ hook, title: data.name, router })
         new DataList({ hook, data, router })
     }
 }

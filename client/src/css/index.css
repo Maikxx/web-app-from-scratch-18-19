@@ -11,10 +11,6 @@ main {
     padding: 24px;
 }
 
-header {
-    padding-top: -24px;
-}
-
 main ol {
     list-style: none;
     display: flex;
@@ -28,6 +24,26 @@ main ol {
 main ol li {
     width: 12%;
     margin-bottom: 12px;
+}
+
+.PageHeader {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.PageHeader a {
+    cursor: pointer;
+    font-weight: bold;
+    transition: 100ms ease-in-out opacity;
+}
+
+.PageHeader a:hover {
+    opacity: 0.6;
+}
+
+.PageHeader > * + * {
+    margin-left: 24px;
 }
 
 .nav-link {

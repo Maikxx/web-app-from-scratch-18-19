@@ -31,7 +31,7 @@ export class CharacterMasterView {
         const { hook, router } = this.props
 
         if (characters && characters.length > 0) {
-            new PageHeader({ hook, title: `Game of Thrones Characters` })
+            new PageHeader({ hook, title: `Game of Thrones Characters`, router })
 
             const listElement = document.createElement('ol')
             characters
