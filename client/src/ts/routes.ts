@@ -1,13 +1,13 @@
 export const routes = {
     index: '/',
     characters: {
-        index: 'characters$',
-        detail: 'characters\/(.*)',
+        index: '*',
+        detail: 'characters/:id',
     },
     houses: {
-        detail: 'houses\/(.*)',
+        detail: 'houses/:id',
     },
     books: {
-        detail: 'books\/(.*)',
+        detail: 'books/:id',
     },
 }

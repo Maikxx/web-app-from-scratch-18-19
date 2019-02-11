@@ -617,6 +617,10 @@
     "@parcel/utils" "^1.11.0"
     physical-cpu-count "^2.0.0"
 
+"@types/navigo@^7.0.1":
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/@types/navigo/-/navigo-7.0.1.tgz#63d1bd0f898f87f645d16f230e9350930ec32160"
+
 "@types/node@^10.11.7":
   version "10.12.21"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.12.21.tgz#7e8a0c34cf29f4e17a36e9bd0ea72d45ba03908e"
@@ -3417,6 +3421,10 @@ nanomatch@^1.2.9:
     regex-not "^1.0.0"
     snapdragon "^0.8.1"
     to-regex "^3.0.1"
+
+navigo@^7.1.2:
+  version "7.1.2"
+  resolved "https://registry.yarnpkg.com/navigo/-/navigo-7.1.2.tgz#f543098ae5cbc5763b926742b5047ffb68a187e2"
 
 needle@^2.2.1:
   version "2.2.4"

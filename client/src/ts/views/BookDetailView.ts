@@ -1,10 +1,10 @@
-import { Router } from '../components/Core/Router'
 import { DetailView } from '../components/Generic/DetailView'
+import Navigo from 'navigo'
 
 interface Props {
     hook: HTMLElement
-    id: number
-    router: Router
+    id: string
+    router: Navigo
 }
 
 export class BookDetailView {

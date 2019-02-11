@@ -1,12 +1,12 @@
-import { Router } from '../Core/Router'
 import { PageHeader } from '../Chrome/PageHeader'
 import { DataList } from './DataList'
 import { DetailFetcherData } from '../../types/Fetchers'
 import { Fetcher } from '../Core/Fetcher'
+import Navigo from 'navigo'
 
 interface Props {
     hook: HTMLElement
-    router: Router
+    router: Navigo
     url: string
 }
 

@@ -56,7 +56,6 @@ To build the client run: `yarn build-client` or `npm run build-client`.
 ## Features
 
 - [x] Render a list of characters from an api.
-- [x] Contains a custom-made router. 🕶️
 - [x] Enables routing from the list to the detail page of that character.
 - [x] Enables routing from the detail page of a character to related detail pages (like books and siblings).
 - [x] React like coding experience. 🕶️
@@ -72,6 +71,7 @@ To build the client run: `yarn build-client` or `npm run build-client`.
 * [Babel polyfill](https://www.npmjs.com/package/babel-polyfill)
 * [BabelJS](https://babeljs.io)
 * [Concurrently](https://www.npmjs.com/package/concurrently)
+* [Navigo](https://github.com/krasimir/navigo) - A router on which I based my initial [Router](./client/src/ts/components/Core/Router.ts), which I now no longer use, but just keep for when I might want to continue with this.
 * [ParcelJS](https://parceljs.org)
 * [TypeScript](https://www.typescriptlang.org)
 * [Wait-on](https://www.npmjs.com/package/wait-on)

@@ -1,9 +1,9 @@
 import { Character } from '../../types/Character'
 import { capitalize } from '../../utils/capitalize'
-import { Router } from '../Core/Router'
+import Navigo from 'navigo'
 
 interface Props {
-    router: Router
+    router: Navigo
     character: Character
     hook: HTMLElement
 }
@@ -38,6 +38,6 @@ export class CharacterButton {
         const { url } = character
         const index = url.slice(url.lastIndexOf('/') + 1)
 
-        router.redirect(`/characters/${index}`)
+        router.navigate(`/characters/${index}`)
     }
 }

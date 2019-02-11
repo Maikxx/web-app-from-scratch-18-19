@@ -1,13 +1,13 @@
-import { Router } from '../Core/Router'
 import { translatedTypes } from '../../translations/translatedTypes'
 import { DetailFetcherData } from '../../types/Fetchers'
 import { validateDate } from '../../utils/validateDate'
 import { Fetcher } from '../Core/Fetcher'
+import Navigo from 'navigo'
 
 interface Props {
     data: DetailFetcherData
     hook: HTMLElement
-    router: Router
+    router: Navigo
     shouldHidePropertyCheck?: (key: string, value: string | string[] | number) => boolean
 }
 
@@ -74,7 +74,7 @@ export class DataList {
                         const buttonElement = document.createElement('button')
                         buttonElement.addEventListener('click', () => {
                             const [ id, path ] = data.url.split('/').reverse()
-                            router.redirect(`/${path}/${id}`)
+                            router.navigate(`/${path}/${id}`)
                         })
 
                         buttonElement.classList.add('link')
