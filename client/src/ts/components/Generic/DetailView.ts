@@ -1,8 +1,8 @@
 import { Router } from '../Core/Router'
-import { fetchByUrl } from '../../fetchers/generic'
 import { PageHeader } from '../Chrome/PageHeader'
 import { DataList } from './DataList'
 import { DetailFetcherData } from '../../types/Fetchers'
+import { Fetcher } from '../Core/Fetcher'
 
 interface Props {
     hook: HTMLElement
@@ -16,14 +16,13 @@ export class DetailView {
 
         ; (async () => {
             try {
-                const data = await fetchByUrl<DetailFetcherData>(url)
+                const data = await new Fetcher({ url }).fetch() as DetailFetcherData
                 this.render(data)
             } catch (error) {
                 console.error(error)
                 throw new Error(error)
             }
         })()
-
     }
 
     public render(data: DetailFetcherData) {

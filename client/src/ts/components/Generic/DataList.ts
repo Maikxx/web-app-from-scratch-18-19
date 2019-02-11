@@ -1,8 +1,8 @@
 import { Router } from '../Core/Router'
-import { fetchByUrl } from '../../fetchers/generic'
 import { translatedTypes } from '../../translations/translatedTypes'
 import { DetailFetcherData } from '../../types/Fetchers'
 import { validateDate } from '../../utils/validateDate'
+import { Fetcher } from '../Core/Fetcher'
 
 interface Props {
     data: DetailFetcherData
@@ -67,25 +67,30 @@ export class DataList {
 
         function getContentValue(hook: HTMLElement) {
             return async function(value: string | number) {
-                if (typeof value !== 'number' && value.includes('https://')) {
-                    const data = await fetchByUrl<DetailFetcherData>(value)
+                try {
+                    if (typeof value !== 'number' && value.includes('https://')) {
+                        const data = await new Fetcher({ url: value }).fetch() as DetailFetcherData
 
-                    const buttonElement = document.createElement('button')
-                    buttonElement.addEventListener('click', () => {
-                        const [ id, path ] = data.url.split('/').reverse()
-                        router.redirect(`/${path}/${id}`)
-                    })
+                        const buttonElement = document.createElement('button')
+                        buttonElement.addEventListener('click', () => {
+                            const [ id, path ] = data.url.split('/').reverse()
+                            router.redirect(`/${path}/${id}`)
+                        })
 
-                    buttonElement.classList.add('link')
-                    buttonElement.innerText = data.name
+                        buttonElement.classList.add('link')
+                        buttonElement.innerText = data.name
 
-                    hook.appendChild(buttonElement)
-                } else {
-                    hook.innerText = typeof value !== 'number'
-                        ? validateDate(value)
-                            ? new Date(value).toLocaleDateString()
-                            : value
-                        : String(value)
+                        hook.appendChild(buttonElement)
+                    } else {
+                        hook.innerText = typeof value !== 'number'
+                            ? validateDate(value)
+                                ? new Date(value).toLocaleDateString()
+                                : value
+                            : String(value)
+                    }
+                } catch (error) {
+                    console.error(error)
+                    throw new Error(error)
                 }
             }
         }
