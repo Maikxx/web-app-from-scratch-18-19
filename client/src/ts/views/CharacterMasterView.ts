@@ -35,7 +35,7 @@ export class CharacterMasterView {
             M.render(new PageHeader({ title: `Game of Thrones Characters`, router }), host)
             const buttons = characters
                 .sort(sortByObjectKey<Character>('name'))
-                .map(character => new CharacterButton({ router, character }), {})
+                .map(character => new CharacterButton({ router, character }))
 
             M.render(new View({ children: [M.create('ol', {}, ...buttons)]}), host)
         }
