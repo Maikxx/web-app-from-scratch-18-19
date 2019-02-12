@@ -1,8 +1,8 @@
-import { routes } from '../../routes'
-import { handleCharacterIndexRoute } from '../../routes/characters/indexRoute'
-import { handleCharacterDetailRoute } from '../../routes/characters/detailRoute'
-import { handleHouseDetailRoute } from '../../routes/houses/detailRoute'
-import { handleBookDetailRoute } from '../../routes/books/detailRoute'
+import { routes } from './routes'
+import { handleCharacterIndexRoute } from './routes/characters/indexRoute'
+import { handleCharacterDetailRoute } from './routes/characters/detailRoute'
+import { handleHouseDetailRoute } from './routes/houses/detailRoute'
+import { handleBookDetailRoute } from './routes/books/detailRoute'
 import Navigo from 'navigo'
 
 export class App {
