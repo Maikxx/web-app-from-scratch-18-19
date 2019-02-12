@@ -6,20 +6,28 @@ import { handleBookDetailRoute } from '../../routes/books/detailRoute'
 import Navigo from 'navigo'
 
 export class App {
-    private mainElement = document.querySelector('main') as HTMLMainElement
-
     constructor() {
         this.initializeRouter()
     }
 
     private initializeRouter() {
+        const mainElement = document.querySelector('main') as HTMLElement
         const router = new Navigo(null, true, '#')
 
-        router.on({
-            [routes.characters.detail]: handleCharacterDetailRoute(this.mainElement, router),
-            [routes.characters.index]: handleCharacterIndexRoute(this.mainElement, router),
-            [routes.houses.detail]: handleHouseDetailRoute(this.mainElement, router),
-            [routes.books.detail]: handleBookDetailRoute(this.mainElement, router),
-        }).resolve()
+        if (!mainElement) {
+            return
+        }
+
+        try {
+            router.on({
+                [routes.characters.detail]: handleCharacterDetailRoute(mainElement, router),
+                [routes.characters.index]: handleCharacterIndexRoute(mainElement, router),
+                [routes.houses.detail]: handleHouseDetailRoute(mainElement, router),
+                [routes.books.detail]: handleBookDetailRoute(mainElement, router),
+            }).resolve()
+        } catch (error) {
+            console.error(error)
+            throw new Error(error)
+        }
     }
 }

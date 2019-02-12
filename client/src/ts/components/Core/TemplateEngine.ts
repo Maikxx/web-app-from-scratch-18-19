@@ -1,10 +1,19 @@
+import { Component } from './Component'
+
 export class M {
-    public static render(component: HTMLElement | string, host: HTMLElement) {
-        const _node = typeof component === 'string'
-            ? document.createTextNode(component)
-            : component
+    public static render(component: HTMLElement | string | Component, host: HTMLElement) {
+        let _node
+        if (typeof component === 'string') {
+            _node = document.createTextNode(component)
+        } else if (component instanceof Component) {
+            _node = component.render()
+        } else {
+            _node = component
+        }
 
         host.appendChild(_node)
+
+        return host
     }
 
     public static createElement(component: string | Function, properties: Object, ...children: any[]) {
@@ -16,7 +25,12 @@ export class M {
             // Properties are set on the attribute, this might not always be what the user wants.
             // TODO: Look into ways in which we check for valid attributes for a given node before assigning.
             Object.entries(properties).forEach(([ attribute, value ]) => {
-                _node.setAttribute(attribute, value)
+                if (attribute.includes('event:')) {
+                    const [ , event ] = attribute.split(':')
+                    _node.addEventListener(event, value)
+                } else {
+                    _node.setAttribute(attribute, value)
+                }
             })
         }
 

@@ -6,7 +6,7 @@ import { validateDate } from '../../utils/validators'
 
 interface Props {
     data: DetailFetcherData
-    hook: HTMLElement
+    host: HTMLElement
     router: Navigo
     shouldHidePropertyCheck?: (key: string, value: string | string[] | number) => boolean
 }
@@ -17,7 +17,7 @@ export class DataList {
     }
 
     public render() {
-        const { data, hook } = this.props
+        const { data, host } = this.props
 
         const listElement = document.createElement('ul')
         listElement.classList.add('data-list')
@@ -40,7 +40,7 @@ export class DataList {
             listElement.appendChild(wrapperElement)
         })
 
-        hook.appendChild(listElement)
+        host.appendChild(listElement)
     }
 
     private shouldHideProperty(key: string, value: string | string[] | number) {
@@ -56,16 +56,16 @@ export class DataList {
             || key === 'url' || key === 'name'
     }
 
-    private async renderDataContent(hook: HTMLElement, value: string | string[] | number) {
+    private async renderDataContent(host: HTMLElement, value: string | string[] | number) {
         const { router } = this.props
 
         if (Array.isArray(value)) {
-            value.forEach(getContentValue(hook))
+            value.forEach(getContentValue(host))
         } else {
-            getContentValue(hook)(value)
+            getContentValue(host)(value)
         }
 
-        function getContentValue(hook: HTMLElement) {
+        function getContentValue(host: HTMLElement) {
             return async function(value: string | number) {
                 try {
                     if (typeof value !== 'number' && value.includes('https://')) {
@@ -80,9 +80,9 @@ export class DataList {
                         buttonElement.classList.add('link')
                         buttonElement.innerText = data.name
 
-                        hook.appendChild(buttonElement)
+                        host.appendChild(buttonElement)
                     } else {
-                        hook.innerText = typeof value !== 'number'
+                        host.innerText = typeof value !== 'number'
                             ? validateDate(value)
                                 ? new Date(value).toLocaleDateString()
                                 : value

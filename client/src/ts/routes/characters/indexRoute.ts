@@ -1,10 +1,10 @@
-import { resetHook } from '../../utils/reset'
+import { resetHost } from '../../utils/reset'
 import { CharacterMasterView } from '../../views/CharacterMasterView'
 import Navigo from 'navigo'
 
-export function handleCharacterIndexRoute(hook: HTMLElement, router: Navigo) {
+export function handleCharacterIndexRoute(host: HTMLElement, router: Navigo) {
     return function() {
-        resetHook(hook)
-        new CharacterMasterView({ hook, router })
+        resetHost(host)
+        new CharacterMasterView({ host, router })
     }
 }

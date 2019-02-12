@@ -1,31 +1,35 @@
 import Navigo from 'navigo'
+import { M } from '../Core/TemplateEngine'
+import { Component } from '../Core/Component'
 
 interface Props {
     title: string
-    hook: HTMLElement
     router: Navigo
 }
 
-export class PageHeader {
+export class PageHeader extends Component {
     constructor(private props: Props) {
-        this.render()
+        super()
     }
 
-    public render() {
-        const { title, hook, router } = this.props
-        const headerElement = document.createElement('header')
-        headerElement.classList.add('PageHeader')
-        const backElement = document.createElement('a')
-        backElement.addEventListener('click', () => {
-            router.navigate('/')
-        })
-        backElement.innerText = 'Game of Thrones'
-        const headingElement = document.createElement('h1')
+    public render = () => {
+        const { title, router } = this.props
 
-        headingElement.innerText = title
-        headerElement.appendChild(backElement)
-        headerElement.appendChild(headingElement)
-
-        hook.appendChild(headerElement)
+        return M.createElement(
+            'header',
+            { class: 'PageHeader' },
+            ...[
+                M.createElement(
+                    'a',
+                    { 'event:click': () => router.navigate('/') },
+                    'Game of Thrones'
+                ),
+                M.createElement(
+                    'h1',
+                    { },
+                    title
+                ),
+            ]
+        )
     }
 }

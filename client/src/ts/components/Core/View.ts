@@ -1,5 +1,5 @@
 export class View {
-    constructor(private hook?: HTMLElement) {
+    constructor(private host?: HTMLElement) {
         this.render()
     }
 
@@ -7,8 +7,8 @@ export class View {
         const view = document.createElement('section')
         view.classList.add('view')
 
-        return this.hook
-            ? this.hook.appendChild(view)
+        return this.host
+            ? this.host.appendChild(view)
             : view
     }
 }

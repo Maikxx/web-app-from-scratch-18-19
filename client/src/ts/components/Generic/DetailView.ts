@@ -3,9 +3,10 @@ import { DataList } from './DataList'
 import { DetailFetcherData } from '../../types/Fetchers'
 import { Fetcher } from '../Core/Fetcher'
 import Navigo from 'navigo'
+import { M } from '../Core/TemplateEngine'
 
 interface Props {
-    hook: HTMLElement
+    host: HTMLElement
     router: Navigo
     url: string
 }
@@ -26,9 +27,9 @@ export class DetailView {
     }
 
     public render(data: DetailFetcherData) {
-        const { hook, router } = this.props
+        const { host, router } = this.props
 
-        new PageHeader({ hook, title: data.name, router })
-        new DataList({ hook, data, router })
+        M.render(new PageHeader({ title: data.name, router }), host)
+        new DataList({ host, data, router })
     }
 }

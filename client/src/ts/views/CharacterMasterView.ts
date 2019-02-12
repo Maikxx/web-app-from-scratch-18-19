@@ -5,9 +5,10 @@ import { CharacterButton } from '../components/Character/CharacterButton'
 import { View } from '../components/Core/View'
 import { sortByObjectKey } from '../utils/sortByObjectKey'
 import Navigo from 'navigo'
+import { M } from '../components/Core/TemplateEngine'
 
 interface Props {
-    hook: HTMLElement
+    host: HTMLElement
     router: Navigo
 }
 
@@ -28,18 +29,18 @@ export class CharacterMasterView {
     }
 
     public render(characters: Character[]) {
-        const { hook, router } = this.props
+        const { host, router } = this.props
 
         if (characters && characters.length > 0) {
-            new PageHeader({ hook, title: `Game of Thrones Characters`, router })
+            M.render(new PageHeader({ title: `Game of Thrones Characters`, router }), host)
 
             const listElement = document.createElement('ol')
             characters
                 .sort(sortByObjectKey<Character>('name'))
-                .forEach(character => new CharacterButton({ hook: listElement, router, character }))
+                .forEach(character => new CharacterButton({ host: listElement, router, character }))
 
-            hook.appendChild(listElement)
-            new View(hook)
+            host.appendChild(listElement)
+            new View(host)
         }
     }
 }

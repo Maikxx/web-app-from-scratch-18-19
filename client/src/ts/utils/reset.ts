@@ -1,3 +1,7 @@
-export function resetHook(hook: HTMLElement) {
-    hook.innerHTML = ''
+export function resetHost(host: HTMLElement) {
+    if (!host) {
+        return
+    }
+
+    host.innerHTML = ''
 }

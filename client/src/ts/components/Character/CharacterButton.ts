@@ -5,7 +5,7 @@ import Navigo from 'navigo'
 interface Props {
     router: Navigo
     character: Character
-    hook: HTMLElement
+    host: HTMLElement
 }
 
 export class CharacterButton {
@@ -14,7 +14,7 @@ export class CharacterButton {
     }
 
     public render() {
-        const { character, hook } = this.props
+        const { character, host } = this.props
         const { name } = character
 
         if (!name || !name.length) {
@@ -30,7 +30,7 @@ export class CharacterButton {
         linkElement.addEventListener('click', this.handleLinkClickEvent)
 
         listItemElement.appendChild(linkElement)
-        hook.appendChild(listItemElement)
+        host.appendChild(listItemElement)
     }
 
     private handleLinkClickEvent = () => {
