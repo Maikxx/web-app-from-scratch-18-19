@@ -3,47 +3,41 @@ import { DetailFetcherData } from '../../types/Fetchers'
 import { Fetcher } from '../Core/Fetcher'
 import Navigo from 'navigo'
 import { validateDate } from '../../utils/validators'
+import { M } from '../Core/Engine'
+import { Component } from '../Core/Component'
 
 interface Props {
     data: DetailFetcherData
-    host: HTMLElement
     router: Navigo
     shouldHidePropertyCheck?: (key: string, value: string | string[] | number) => boolean
 }
 
-export class DataList {
+export class DataList extends Component {
     constructor(private props: Props) {
-        this.render()
+        super()
     }
 
-    public render() {
-        const { data, host } = this.props
+    public render = async () => {
+        const { data } = this.props
+        const listElements = await Promise.all(Object.entries(data).map(this.createListElement))
 
-        const listElement = document.createElement('ul')
-        listElement.classList.add('data-list')
-
-        Object.entries(data).map(async ([ key, value ]) => {
-            if (this.shouldHideProperty(key, value)) {
-                return
-            }
-
-            const wrapperElement = document.createElement('li')
-            const keyElement = document.createElement('h3')
-            const valueElement = document.createElement('p')
-
-            keyElement.innerText = translatedTypes[key]
-
-            await this.renderDataContent(valueElement, value)
-
-            wrapperElement.appendChild(keyElement)
-            wrapperElement.appendChild(valueElement)
-            listElement.appendChild(wrapperElement)
-        })
-
-        host.appendChild(listElement)
+        return M.create('ul', { 'classList:add': 'data-list' }, ...listElements)
     }
 
-    private shouldHideProperty(key: string, value: string | string[] | number) {
+    private createListElement = async ([ key, value ]: [string, string | string[] | number]) => {
+        if (this.shouldHideProperty(key, value)) {
+            return null
+        }
+
+        const content = await this.getDataContent(value)
+
+        return M.create('li', {}, ...[
+            M.create('h3', {}, translatedTypes[key]),
+            M.create('p', {}, content),
+        ])
+    }
+
+    private shouldHideProperty = (key: string, value: string | string[] | number) => {
         const { shouldHidePropertyCheck } = this.props
 
         if (shouldHidePropertyCheck) {
@@ -56,43 +50,50 @@ export class DataList {
             || key === 'url' || key === 'name'
     }
 
-    private async renderDataContent(host: HTMLElement, value: string | string[] | number) {
-        const { router } = this.props
-
+    private getDataContent = async (value: string | string[] | number) => {
         if (Array.isArray(value)) {
-            value.forEach(getContentValue(host))
+            return Promise.all(value.map(this.getContentValue))
         } else {
-            getContentValue(host)(value)
+            return this.getContentValue(value)
         }
+    }
 
-        function getContentValue(host: HTMLElement) {
-            return async function(value: string | number) {
-                try {
-                    if (typeof value !== 'number' && value.includes('https://')) {
-                        const data = await new Fetcher({ url: value }).fetch() as DetailFetcherData
+    private getContentValue = async (value: string | number) => {
+        try {
+            if (typeof value !== 'number' && value.includes('https://')) {
+                const data = await new Fetcher({ url: value }).fetch() as DetailFetcherData
 
-                        const buttonElement = document.createElement('button')
-                        buttonElement.addEventListener('click', () => {
-                            const [ id, path ] = data.url.split('/').reverse()
-                            router.navigate(`/${path}/${id}`)
-                        })
-
-                        buttonElement.classList.add('link')
-                        buttonElement.innerText = data.name
-
-                        host.appendChild(buttonElement)
+                return M.create(
+                    'button',
+                    {
+                        'event:click': this.handleLinkClick(data),
+                        'classList:add': 'link',
+                    },
+                    data.name
+                )
+            } else {
+                if (typeof value !== 'number') {
+                    if (validateDate(value)) {
+                        return new Date(value).toLocaleDateString()
                     } else {
-                        host.innerText = typeof value !== 'number'
-                            ? validateDate(value)
-                                ? new Date(value).toLocaleDateString()
-                                : value
-                            : String(value)
+                        return value
                     }
-                } catch (error) {
-                    console.error(error)
-                    throw new Error(error)
+                } else {
+                    return String(value)
                 }
             }
+        } catch (error) {
+            console.error(error)
+            throw new Error(error)
+        }
+    }
+
+    private handleLinkClick = (data: DetailFetcherData) => {
+        const { router } = this.props
+
+        return function() {
+            const [ id, path ] = data.url.split('/').reverse()
+            router.navigate(`/${path}/${id}`)
         }
     }
 }

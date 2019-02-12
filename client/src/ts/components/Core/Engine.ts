@@ -1,12 +1,13 @@
 import { Component } from './Component'
 
 export class M {
-    public static render(component: HTMLElement | string | Component, host: HTMLElement) {
+    public static async render(component: HTMLElement | string | Component, host: HTMLElement) {
         let _node
         if (typeof component === 'string') {
             _node = document.createTextNode(component)
         } else if (component instanceof Component) {
-            _node = component.render()
+            const content = await component.render()
+            _node = content
         } else {
             _node = component
         }
@@ -32,7 +33,10 @@ export class M {
         }
 
         if (children && children.length > 0) {
-            children.forEach(child => this.render(child, _node))
+            children.forEach(child => Array.isArray(child)
+                ? child.forEach(c => this.render(c, _node))
+                : this.render(child, _node)
+            )
         }
 
         return _node

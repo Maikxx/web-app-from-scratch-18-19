@@ -30,6 +30,6 @@ export class DetailView {
         const { host, router } = this.props
 
         M.render(new PageHeader({ title: data.name, router }), host)
-        new DataList({ host, data, router })
+        M.render(new DataList({ data, router }), host)
     }
 }
