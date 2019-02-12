@@ -3,7 +3,7 @@ import { DataList } from './DataList'
 import { DetailFetcherData } from '../../types/Fetchers'
 import { Fetcher } from '../Core/Fetcher'
 import Navigo from 'navigo'
-import { M } from '../Core/TemplateEngine'
+import { M } from '../Core/Engine'
 
 interface Props {
     host: HTMLElement

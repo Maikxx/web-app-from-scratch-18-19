@@ -11,12 +11,16 @@ export class M {
             _node = component
         }
 
+        if (!_node) {
+            return null
+        }
+
         host.appendChild(_node)
 
         return host
     }
 
-    public static createElement(component: string | Function, properties: Object, ...children: any[]) {
+    public static create(component: string | Function, properties: Object, ...children: any[]) {
         const _node: HTMLElement = typeof component === 'function'
             ? component(properties, children)
             : document.createElement(component)
@@ -24,14 +28,7 @@ export class M {
         if (properties) {
             // Properties are set on the attribute, this might not always be what the user wants.
             // TODO: Look into ways in which we check for valid attributes for a given node before assigning.
-            Object.entries(properties).forEach(([ attribute, value ]) => {
-                if (attribute.includes('event:')) {
-                    const [ , event ] = attribute.split(':')
-                    _node.addEventListener(event, value)
-                } else {
-                    _node.setAttribute(attribute, value)
-                }
-            })
+            Object.entries(properties).forEach(M.parseAttribute(_node))
         }
 
         if (children && children.length > 0) {
@@ -39,5 +36,19 @@ export class M {
         }
 
         return _node
+    }
+
+    public static parseAttribute(_node: HTMLElement) {
+        return function ([ attribute, value ]: [string, any]) {
+            if (attribute.includes('event:')) {
+                const [ , event ] = attribute.split(':')
+                _node.addEventListener(event, value)
+            } else if (attribute.includes('classList')) {
+                const [ , action ] = attribute.split(':')
+                _node.classList[action](value)
+            } else {
+                _node.setAttribute(attribute, value)
+            }
+        }
     }
 }

@@ -2,10 +2,10 @@ import { fetchCharacters } from '../fetchers/character'
 import { Character } from '../types/Character'
 import { PageHeader } from '../components/Chrome/PageHeader'
 import { CharacterButton } from '../components/Character/CharacterButton'
-import { View } from '../components/Core/View'
+import { View } from '../components/Generic/View'
 import { sortByObjectKey } from '../utils/sortByObjectKey'
 import Navigo from 'navigo'
-import { M } from '../components/Core/TemplateEngine'
+import { M } from '../components/Core/Engine'
 
 interface Props {
     host: HTMLElement
@@ -33,14 +33,11 @@ export class CharacterMasterView {
 
         if (characters && characters.length > 0) {
             M.render(new PageHeader({ title: `Game of Thrones Characters`, router }), host)
-
-            const listElement = document.createElement('ol')
-            characters
+            const buttons = characters
                 .sort(sortByObjectKey<Character>('name'))
-                .forEach(character => new CharacterButton({ host: listElement, router, character }))
+                .map(character => new CharacterButton({ router, character }), {})
 
-            host.appendChild(listElement)
-            new View(host)
+            M.render(new View({ children: [M.create('ol', {}, ...buttons)]}), host)
         }
     }
 }

@@ -1,5 +1,5 @@
 import Navigo from 'navigo'
-import { M } from '../Core/TemplateEngine'
+import { M } from '../Core/Engine'
 import { Component } from '../Core/Component'
 
 interface Props {
@@ -15,16 +15,16 @@ export class PageHeader extends Component {
     public render = () => {
         const { title, router } = this.props
 
-        return M.createElement(
+        return M.create(
             'header',
             { class: 'PageHeader' },
             ...[
-                M.createElement(
+                M.create(
                     'a',
                     { 'event:click': () => router.navigate('/') },
                     'Game of Thrones'
                 ),
-                M.createElement(
+                M.create(
                     'h1',
                     { },
                     title

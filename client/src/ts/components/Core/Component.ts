@@ -1,3 +1,3 @@
 export class Component {
-    public render: () => HTMLElement
+    public render: () => HTMLElement | null
 }

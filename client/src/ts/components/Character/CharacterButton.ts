@@ -1,36 +1,41 @@
 import { Character } from '../../types/Character'
 import { capitalize } from '../../utils/capitalize'
 import Navigo from 'navigo'
+import { M } from '../Core/Engine'
+import { Component } from '../Core/Component'
 
 interface Props {
     router: Navigo
     character: Character
-    host: HTMLElement
 }
 
-export class CharacterButton {
+export class CharacterButton extends Component {
     constructor(private props: Props) {
-        this.render()
+        super()
     }
 
-    public render() {
-        const { character, host } = this.props
+    public render = () => {
+        const { character } = this.props
         const { name } = character
 
         if (!name || !name.length) {
-            return
+            return null
         }
 
-        const listItemElement = document.createElement('li')
-        const linkElement = document.createElement('button')
-
-        linkElement.classList.add('nav-link')
-        linkElement.innerText = capitalize(name)
-
-        linkElement.addEventListener('click', this.handleLinkClickEvent)
-
-        listItemElement.appendChild(linkElement)
-        host.appendChild(listItemElement)
+        return M.create(
+            'li',
+            {},
+            ...[
+                M.create(
+                    'button',
+                    {
+                        'classList:add': 'nav-link',
+                        'event:click': this.handleLinkClickEvent,
+                    },
+                    capitalize(name)
+                ),
+            ]
+        )
     }
 
     private handleLinkClickEvent = () => {
