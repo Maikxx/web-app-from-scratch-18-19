@@ -23,6 +23,7 @@ export class CharacterMasterView {
 
         if (characters && characters.length > 0) {
             M.render(new PageHeader({ title: `Game of Thrones Characters`, router }), host)
+
             const uniqueCharacters = Filter.getUniqueArrayByObjectKey<Character>(characters, 'name')
             const buttons = uniqueCharacters
                 .sort(Sorter.sortByObjectKey<Character>('name'))
