@@ -2,7 +2,7 @@ import { Component } from '../Core/Component'
 import { M } from '../Core/Engine'
 
 interface Props {
-    children?: [string | HTMLElement]
+    children?: (string | HTMLElement | Component)[]
 }
 
 export class View extends Component {

@@ -16,6 +16,6 @@ export class BookDetailView {
         const { host, router, id } = this.props
         const url = `https://anapioficeandfire.com/api/books/${id}`
 
-        new DetailView({ router, host, url })
+        new DetailView({ router, url, host })
     }
 }
