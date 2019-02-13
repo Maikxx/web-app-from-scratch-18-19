@@ -3,7 +3,7 @@ import { Character } from '../types/Character'
 import { PageHeader } from '../components/Chrome/PageHeader'
 import { CharacterButton } from '../components/Character/CharacterButton'
 import { View } from '../components/Generic/View'
-import { sortByObjectKey } from '../utils/sortByObjectKey'
+import { Sorter } from '../utils/Sorter'
 import Navigo from 'navigo'
 import { M } from '../utils/Engine'
 import { getUniqueArrayByObjectKey } from '../utils/uniqueArrayByObjectKey'
@@ -37,7 +37,7 @@ export class CharacterMasterView {
             M.render(new PageHeader({ title: `Game of Thrones Characters`, router }), host)
             const uniqueCharacters = getUniqueArrayByObjectKey<Character>(characters, 'name')
             const buttons = uniqueCharacters
-                .sort(sortByObjectKey<Character>('name'))
+                .sort(Sorter.sortByObjectKey<Character>('name'))
                 .map(character => new CharacterButton({ router, character }))
 
             M.render(new View({ children: [M.create('ol', {}, ...buttons)]}), host)

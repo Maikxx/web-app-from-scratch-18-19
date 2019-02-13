@@ -2,7 +2,7 @@ import { translatedTypes } from '../../translations/translatedTypes'
 import { DetailFetcherData } from '../../types/Fetchers'
 import { Fetcher } from '../../utils/Fetcher'
 import Navigo from 'navigo'
-import { validateDate } from '../../utils/validators'
+import { Validator } from '../../utils/Validator'
 import { M, Component } from '../../utils/Engine'
 
 interface Props {
@@ -72,7 +72,7 @@ export class DataList extends Component {
                 )
             } else {
                 if (typeof value !== 'number') {
-                    if (validateDate(value)) {
+                    if (Validator.validateDate(value)) {
                         return new Date(value).toLocaleDateString()
                     } else {
                         return value
