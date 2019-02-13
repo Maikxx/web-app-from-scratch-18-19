@@ -17,12 +17,12 @@ main ol {
     margin-top: 12px;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
     flex-wrap: wrap;
 }
 
 main ol li {
     width: 12%;
+    padding: 1%;
     margin-bottom: 12px;
 }
 
