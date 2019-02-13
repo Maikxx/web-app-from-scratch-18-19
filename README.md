@@ -4,11 +4,11 @@ A Game of Thrones inspired application which allows the user to explore relation
 
 Characters overview page | Character detail page
 :-------------------------:|:-------------------------:
-![](docs/characters.png) | ![](docs/character.png)
+![](docs/assets/characters.png) | ![](docs/assets/character.png)
 
 House detail page | Book detail page
 :-------------------------:|:-------------------------:
-![](docs/house.png) | ![](docs/book.png)
+![](docs/assets/house.png) | ![](docs/assets/book.png)
 
 ## Table of Contents
 
@@ -16,8 +16,8 @@ House detail page | Book detail page
 2. [Installation](#installation)
     1. [Pre-install](#pre-install)
     2. [Install](#install)
-3. [Interaction diagram](#interaction-diagram)
-4. [Actor flow](#actor-flow)
+3. [Actor flow](#actor-flow)
+4. [Interaction diagram](#interaction-diagram)
 5. [Features](#features)
 6. [Technologies used](#technologies-used)
 7. [Patterns](#patterns)
@@ -45,13 +45,22 @@ House detail page | Book detail page
 
 To build the client run: `yarn build-client` or `npm run build-client`.
 
-## Interaction diagram
-
-![Interaction diagram](docs/interaction-diagram.png)
-
 ## Actor flow
 
-![Actor flow](docs/actor_flow.png)
+### V1
+
+<details>
+    <summary>Open version 1</summary>
+    <img src="docs/assets/actor_flow.png">
+</details>
+
+### V2
+
+![Actor flow](docs/assets/actor_flo2.png)
+
+## Interaction diagram
+
+![Interaction diagram](docs/assets/interaction-diagram.png)
 
 ## Features
 
