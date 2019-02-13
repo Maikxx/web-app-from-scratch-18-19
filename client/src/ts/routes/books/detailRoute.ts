@@ -1,6 +1,6 @@
-import { resetHost } from '../../utils/reset'
 import { BookDetailView } from '../../views/BookDetailView'
 import Navigo from 'navigo'
+import { M } from '../../utils/Engine'
 
 interface Args {
     id: string
@@ -8,7 +8,7 @@ interface Args {
 
 export function handleBookDetailRoute(host: HTMLElement, router: Navigo) {
     return function(args: Args) {
-        resetHost(host)
+        M.resetComponent(host)
         new BookDetailView({ host, id: args.id, router })
     }
 }

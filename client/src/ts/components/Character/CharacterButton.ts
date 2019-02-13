@@ -1,7 +1,7 @@
 import { Character } from '../../types/Character'
-import { capitalize } from '../../utils/capitalize'
 import Navigo from 'navigo'
 import { M, Component } from '../../utils/Engine'
+import { Transformer } from '../../utils/Transformer'
 
 interface Props {
     router: Navigo
@@ -28,7 +28,7 @@ export class CharacterButton extends Component {
                     'classList:add': 'nav-link',
                     'event:click': this.handleLinkClickEvent,
                 },
-                capitalize(name)
+                Transformer.capitalize(name)
             )]
         )
     }

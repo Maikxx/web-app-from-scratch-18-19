@@ -3,6 +3,10 @@ export class Component {
 }
 
 export class M {
+    public static resetComponent(component: HTMLElement) {
+        component.innerHTML = ''
+    }
+
     public static async render(component: HTMLElement | string | Component, host: HTMLElement) {
         let _node
         if (typeof component === 'string') {
