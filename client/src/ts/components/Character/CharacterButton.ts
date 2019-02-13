@@ -1,7 +1,7 @@
 import { Character } from '../../types/Character'
 import { capitalize } from '../../utils/capitalize'
 import Navigo from 'navigo'
-import { M, Component } from '../Core/Engine'
+import { M, Component } from '../../utils/Engine'
 
 interface Props {
     router: Navigo

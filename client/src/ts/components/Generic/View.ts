@@ -1,4 +1,4 @@
-import { M, Component } from '../Core/Engine'
+import { M, Component } from '../../utils/Engine'
 
 interface Props {
     children?: (string | HTMLElement | Component)[]

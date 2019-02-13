@@ -1,9 +1,9 @@
 import { PageHeader } from '../Chrome/PageHeader'
 import { DataList } from './DataList'
 import { DetailFetcherData } from '../../types/Fetchers'
-import { Fetcher } from '../Core/Fetcher'
+import { Fetcher } from '../../utils/Fetcher'
 import Navigo from 'navigo'
-import { M } from '../Core/Engine'
+import { M } from '../../utils/Engine'
 import { View } from './View'
 
 interface Props {

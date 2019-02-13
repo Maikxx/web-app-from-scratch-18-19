@@ -1,4 +1,4 @@
-import { Fetcher } from '../components/Core/Fetcher'
+import { Fetcher } from '../utils/Fetcher'
 
 export async function fetchCharacters() {
     const urlRoot = `https://anapioficeandfire.com/api/`

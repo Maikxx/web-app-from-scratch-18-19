@@ -5,7 +5,7 @@ import { CharacterButton } from '../components/Character/CharacterButton'
 import { View } from '../components/Generic/View'
 import { sortByObjectKey } from '../utils/sortByObjectKey'
 import Navigo from 'navigo'
-import { M } from '../components/Core/Engine'
+import { M } from '../utils/Engine'
 
 interface Props {
     host: HTMLElement

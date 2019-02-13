@@ -71,7 +71,7 @@ To build the client run: `yarn build-client` or `npm run build-client`.
 * [Babel polyfill](https://www.npmjs.com/package/babel-polyfill)
 * [BabelJS](https://babeljs.io)
 * [Concurrently](https://www.npmjs.com/package/concurrently)
-* [Navigo](https://github.com/krasimir/navigo) - A router on which I based my initial [Router](./client/src/ts/components/Core/Router.ts), which I now no longer use, but just keep for when I might want to continue with this.
+* [Navigo](https://github.com/krasimir/navigo) - A router on which I based my initial [Router](./client/src/ts/utils/Router.ts), which I now no longer use, but just keep for when I might want to continue with this.
 * [ParcelJS](https://parceljs.org)
 * [TypeScript](https://www.typescriptlang.org)
 * [Wait-on](https://www.npmjs.com/package/wait-on)
