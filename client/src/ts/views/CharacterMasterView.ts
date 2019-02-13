@@ -6,7 +6,7 @@ import { View } from '../components/Generic/View'
 import { Sorter } from '../utils/Sorter'
 import Navigo from 'navigo'
 import { M } from '../utils/Engine'
-import { getUniqueArrayByObjectKey } from '../utils/uniqueArrayByObjectKey'
+import { Filter } from '../utils/Filter'
 
 interface Props {
     host: HTMLElement
@@ -35,7 +35,7 @@ export class CharacterMasterView {
 
         if (characters && characters.length > 0) {
             M.render(new PageHeader({ title: `Game of Thrones Characters`, router }), host)
-            const uniqueCharacters = getUniqueArrayByObjectKey<Character>(characters, 'name')
+            const uniqueCharacters = Filter.getUniqueArrayByObjectKey<Character>(characters, 'name')
             const buttons = uniqueCharacters
                 .sort(Sorter.sortByObjectKey<Character>('name'))
                 .map(character => new CharacterButton({ router, character }))
