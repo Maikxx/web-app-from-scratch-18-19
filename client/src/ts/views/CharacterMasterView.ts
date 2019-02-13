@@ -15,19 +15,7 @@ interface Props {
 
 export class CharacterMasterView {
     constructor(private props: Props) {
-        (async () => {
-            let characters
-
-            try {
-                characters = await fetchCharacters()
-                console.log(characters)
-            } catch (error) {
-                console.error(error)
-                throw new Error(error)
-            }
-
-            this.render(characters)
-        })()
+        this.initializeFetch()
     }
 
     public render(characters: Character[]) {
@@ -42,5 +30,18 @@ export class CharacterMasterView {
 
             M.render(new View({ children: [M.create('ol', {}, ...buttons)]}), host)
         }
+    }
+
+    private async initializeFetch() {
+        let characters = []
+
+        try {
+            characters = await fetchCharacters()
+        } catch (error) {
+            console.error(error)
+            throw new Error(error)
+        }
+
+        this.render(characters)
     }
 }
