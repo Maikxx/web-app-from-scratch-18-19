@@ -9,7 +9,7 @@ import { Component } from '../../utils/Component'
 interface Props {
     data: DetailFetcherData
     router: Navigo
-    shouldHidePropertyCheck?: (key: string, value: string | string[] | number) => boolean
+    loaderRoot: HTMLElement
 }
 
 export class DataList extends Component {
@@ -18,8 +18,9 @@ export class DataList extends Component {
     }
 
     public render = async () => {
-        const { data } = this.props
+        const { data, loaderRoot } = this.props
         const listElements = await Promise.all(Object.entries(data).map(this.createListElement))
+        M.toggleLoader(loaderRoot)
 
         return M.create('ul', { 'classList:add': 'data-list' }, ...listElements)
     }
@@ -38,12 +39,6 @@ export class DataList extends Component {
     }
 
     private shouldHideProperty = (key: string, value: string | string[] | number) => {
-        const { shouldHidePropertyCheck } = this.props
-
-        if (shouldHidePropertyCheck) {
-            return shouldHidePropertyCheck(key, value)
-        }
-
         return !value
             || (typeof value !== 'number' && value.length === 0)
             || (Array.isArray(value) && !value[0])

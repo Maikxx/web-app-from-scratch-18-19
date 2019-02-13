@@ -14,17 +14,7 @@ interface Props {
 
 export class DetailView {
     constructor(private props: Props) {
-        const { url } = this.props
-
-        ; (async () => {
-            try {
-                const data = await new Fetcher({ url }).fetch() as DetailFetcherData
-                this.render(data)
-            } catch (error) {
-                console.error(error)
-                throw new Error(error)
-            }
-        })()
+        this.initializeFetcher()
     }
 
     public render(data: DetailFetcherData) {
@@ -32,7 +22,20 @@ export class DetailView {
 
         M.render(new View({ children: [
             new PageHeader({ title: data.name, router }),
-            new DataList({ data, router }),
+            new DataList({ data, router, loaderRoot: host }),
         ]}), host)
+    }
+
+    private async initializeFetcher() {
+        const { url, host } = this.props
+
+        try {
+            M.toggleLoader(host)
+            const data = await new Fetcher({ url }).fetch() as DetailFetcherData
+            this.render(data)
+        } catch (error) {
+            console.error(error)
+            throw new Error(error)
+        }
     }
 }

@@ -11,6 +11,10 @@ main {
     padding: 24px;
 }
 
+button {
+    background-color: transparent;
+}
+
 main ol {
     list-style: none;
     display: flex;

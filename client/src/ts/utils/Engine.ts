@@ -66,11 +66,7 @@ export class M {
         if (!loaderElement) {
             M.render(new Loader(), host)
         } else {
-            const loaderParentElement = loaderElement.parentElement
-
-            if (loaderParentElement) {
-                loaderParentElement.removeChild(loaderElement)
-            }
+            host.removeChild(loaderElement)
         }
     }
 }
