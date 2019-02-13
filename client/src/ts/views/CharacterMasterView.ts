@@ -33,10 +33,13 @@ export class CharacterMasterView {
     }
 
     private async initializeFetch() {
+        const { host } = this.props
         let characters = []
 
         try {
+            M.toggleLoader(host)
             characters = await fetchCharacters()
+            M.toggleLoader(host)
         } catch (error) {
             console.error(error)
             throw new Error(error)

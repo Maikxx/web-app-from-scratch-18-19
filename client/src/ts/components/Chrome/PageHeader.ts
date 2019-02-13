@@ -1,5 +1,6 @@
 import Navigo from 'navigo'
-import { M, Component } from '../../utils/Engine'
+import { M } from '../../utils/Engine'
+import { Component } from '../../utils/Component'
 
 interface Props {
     title: string

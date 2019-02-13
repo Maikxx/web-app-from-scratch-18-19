@@ -1,7 +1,8 @@
 import { Character } from '../../types/Character'
 import Navigo from 'navigo'
-import { M, Component } from '../../utils/Engine'
+import { M } from '../../utils/Engine'
 import { Transformer } from '../../utils/Transformer'
+import { Component } from '../../utils/Component'
 
 interface Props {
     router: Navigo

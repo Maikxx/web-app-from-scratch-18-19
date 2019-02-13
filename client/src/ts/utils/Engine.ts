@@ -1,12 +1,7 @@
-export class Component {
-    public render: () => Promise<HTMLElement> | Promise<null> | HTMLElement | null
-}
+import { Loader } from '../components/Generic/Loader'
+import { Component } from './Component'
 
 export class M {
-    public static resetComponent(component: HTMLElement) {
-        component.innerHTML = ''
-    }
-
     public static async render(component: HTMLElement | string | Component, host: HTMLElement) {
         let _node
         if (typeof component === 'string') {
@@ -58,6 +53,23 @@ export class M {
                 _node.classList[action](value)
             } else {
                 _node.setAttribute(attribute, value)
+            }
+        }
+    }
+
+    public static resetComponent(component: HTMLElement) {
+        component.innerHTML = ''
+    }
+
+    public static toggleLoader(host: HTMLElement) {
+        const loaderElement = host.querySelector('.Loader')
+        if (!loaderElement) {
+            M.render(new Loader(), host)
+        } else {
+            const loaderParentElement = loaderElement.parentElement
+
+            if (loaderParentElement) {
+                loaderParentElement.removeChild(loaderElement)
             }
         }
     }
