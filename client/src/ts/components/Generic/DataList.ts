@@ -3,8 +3,7 @@ import { DetailFetcherData } from '../../types/Fetchers'
 import { Fetcher } from '../Core/Fetcher'
 import Navigo from 'navigo'
 import { validateDate } from '../../utils/validators'
-import { M } from '../Core/Engine'
-import { Component } from '../Core/Component'
+import { M, Component } from '../Core/Engine'
 
 interface Props {
     data: DetailFetcherData

@@ -1,4 +1,6 @@
-import { Component } from './Component'
+export class Component {
+    public render: () => Promise<HTMLElement> | Promise<null> | HTMLElement | null
+}
 
 export class M {
     public static async render(component: HTMLElement | string | Component, host: HTMLElement) {
