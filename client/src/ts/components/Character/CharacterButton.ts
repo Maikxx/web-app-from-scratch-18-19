@@ -21,19 +21,15 @@ export class CharacterButton extends Component {
             return null
         }
 
-        return M.create(
-            'li',
-            {},
-            ...[
-                M.create(
-                    'button',
-                    {
-                        'classList:add': 'nav-link',
-                        'event:click': this.handleLinkClickEvent,
-                    },
-                    capitalize(name)
-                ),
-            ]
+        return M.create('li', {}, ...[
+            M.create(
+                'button',
+                {
+                    'classList:add': 'nav-link',
+                    'event:click': this.handleLinkClickEvent,
+                },
+                capitalize(name)
+            )]
         )
     }
 
