@@ -112,7 +112,9 @@ For a changelog, please refer to [this file](./docs/CHANGELOG.md).
 
 ## Data sources
 
-* [apioffireandice](https://anapioficeandfire.com/) - A Game of Thrones api providing a lot of information about characters, books, houses and more. This API has no limits as to rates or authentication.
+* [apioffireandice](https://anapioficeandfire.com/)
+    This is a Game of Thrones API providing a lot of information about Game of Thrones characters, books, houses and more.
+    This API has no authentication, but has got a rate limit of 20000 requests made per day, per IP-address.
 
 ## License
 
