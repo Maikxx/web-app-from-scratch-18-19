@@ -111,7 +111,7 @@ For a changelog, please refer to [this file](./docs/CHANGELOG.md).
 
 ## Data sources
 
-* [apioffireandice](https://anapioficeandfire.com/)
+* [APIOfFireAndIce](https://anapioficeandfire.com/)
     This is a Game of Thrones API providing a lot of information about Game of Thrones characters, books, houses and more.
 
     This API has no authentication, but has got a few limits:
