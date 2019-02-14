@@ -50,7 +50,7 @@ To build the client run: `yarn build-client` or `npm run build-client`.
 ### V1
 
 <details>
-    <summary>Open version 1</summary>
+    <summary>Click here to see the first version</summary>
     <img src="docs/assets/actor_flow.png">
 </details>
 
