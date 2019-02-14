@@ -17,6 +17,8 @@ House detail page | Book detail page
     1. [Pre-install](#pre-install)
     2. [Install](#install)
 3. [Actor flow](#actor-flow)
+    1. [Version 1](#actor-flow-version-1)
+    1. [Version 2](#actor-flow-version-2)
 4. [Interaction diagram](#interaction-diagram)
 5. [Features](#features)
 6. [Technologies used](#technologies-used)
@@ -47,14 +49,14 @@ To build the client run: `yarn build-client` or `npm run build-client`.
 
 ## Actor flow
 
-### V1
+### Actor flow version 1
 
 <details>
     <summary>Click here to see the first version</summary>
     <img src="docs/assets/actor_flow.png">
 </details>
 
-### V2
+### Actor flow version 2
 
 ![Actor flow](docs/assets/actor-flow2.png)
 
