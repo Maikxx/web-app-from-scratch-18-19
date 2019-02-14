@@ -18,8 +18,10 @@ House detail page | Book detail page
     2. [Install](#install)
 3. [Actor flow](#actor-flow)
     1. [Version 1](#actor-flow-version-1)
-    1. [Version 2](#actor-flow-version-2)
+    2. [Version 2](#actor-flow-version-2)
 4. [Interaction diagram](#interaction-diagram)
+    1. [Version 1](#interaction-diagram-version-1)
+    2. [Version 2](#interaction-diagram-version-2)
 5. [Features](#features)
 6. [Technologies used](#technologies-used)
 7. [Patterns](#patterns)
@@ -62,7 +64,16 @@ To build the client run: `yarn build-client` or `npm run build-client`.
 
 ## Interaction diagram
 
-![Interaction diagram](docs/assets/interaction-diagram.png)
+### Interaction diagram version 1
+
+<details>
+    <summary>Click here to see the first version</summary>
+    <img src="docs/assets/interaction-diagram.png">
+</details>
+
+### Interaction diagram version 2
+
+TODO
 
 ## Features
 
