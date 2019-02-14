@@ -60,7 +60,7 @@ To build the client run: `yarn build-client` or `npm run build-client`.
 
 ### Actor flow version 2
 
-![Actor flow](docs/assets/actor-flow2.png)
+![Second iteration of the actor flow diagram](docs/assets/actor-flow2.png)
 
 ## Interaction diagram
 
@@ -73,7 +73,7 @@ To build the client run: `yarn build-client` or `npm run build-client`.
 
 ### Interaction diagram version 2
 
-TODO
+![Second iteration of the interaction diagram](docs/assets/interaction-diagram2.png)
 
 ## Features
 
@@ -86,7 +86,6 @@ TODO
 - [x] Render a [list of data](./client/src/ts/components/Generic/DataList.ts) from an api.
 - [ ] A semi-decent looking application. 🙈
 - [ ] Multiple apis.
-- [ ] A finalized interaction diagram.
 
 ## Technologies used
 
