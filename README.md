@@ -86,6 +86,9 @@ To build the client run: `yarn build-client` or `npm run build-client`.
 - [x] Render a [list of data](./client/src/ts/components/Generic/DataList.ts) from an api.
 - [ ] A semi-decent looking application. 🙈
 - [ ] Multiple apis.
+- [ ] Character pagination.
+- [ ] Data caching.
+- [ ] Filters.
 
 ## Technologies used
 
