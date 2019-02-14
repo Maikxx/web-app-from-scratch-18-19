@@ -56,7 +56,7 @@ To build the client run: `yarn build-client` or `npm run build-client`.
 
 ### V2
 
-![Actor flow](docs/assets/actor_flo2.png)
+![Actor flow](docs/assets/actor-flow2.png)
 
 ## Interaction diagram
 
