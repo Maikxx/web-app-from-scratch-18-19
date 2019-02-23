@@ -6,3 +6,4 @@
 * Use [Navigo](https://github.com/krasimir/navigo) as a router, instead of my [custom built one](../client/src/ts/utils/Router.ts) because of compatibility issues.
 * Refactor util folder files to class-based components.
 * Add loaders where the application is fetching data.
+* Add infinite scrolling.

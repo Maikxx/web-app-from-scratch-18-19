@@ -22,13 +22,18 @@ interface FetchCharactersProps {
 
 export class CharacterMasterView {
     private currentPage = 1
+    private PAGE_SIZE = 50
 
     constructor(private props: Props) {
         const { host } = this.props
 
         ; (async() => {
             await this.initializeFetch()
-            new InfiniteScroll({ root: host.querySelector('.infinite-scroll-list'), onLoadMore: this.onLoadMore.bind(this), pageSize: 50 })
+            new InfiniteScroll({
+                root: host.querySelector('.infinite-scroll-list'),
+                onLoadMore: this.onLoadMore.bind(this),
+                pageSize: this.PAGE_SIZE,
+            })
         })()
     }
 
@@ -45,7 +50,7 @@ export class CharacterMasterView {
     private async onLoadMore() {
         const { host } = this.props
 
-        const newCharacters = await this.fetchCharacters({ pageSize: 50, currentPage: this.currentPage, host })
+        const newCharacters = await this.fetchCharacters({ pageSize: this.PAGE_SIZE, currentPage: this.currentPage, host })
         const list = host.querySelector('.infinite-scroll-list')
         const buttons = this.getCharacterButtons(newCharacters)
 
@@ -71,7 +76,7 @@ export class CharacterMasterView {
 
     private async initializeFetch() {
         const { host } = this.props
-        const characters = await this.fetchCharacters({ pageSize: 100, currentPage: 1, host })
+        const characters = await this.fetchCharacters({ pageSize: this.PAGE_SIZE, currentPage: 1, host })
 
         this.render(characters)
     }
