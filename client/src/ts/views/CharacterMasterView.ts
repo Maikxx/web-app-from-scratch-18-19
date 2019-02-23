@@ -7,15 +7,29 @@ import { Sorter } from '../utils/Sorter'
 import Navigo from 'navigo'
 import { M } from '../utils/Engine'
 import { Filter } from '../utils/Filter'
+import { InfiniteScroll } from '../utils/InfiniteScroll'
 
 interface Props {
     host: HTMLElement
     router: Navigo
 }
 
+interface FetchCharactersProps {
+    pageSize: number,
+    currentPage: number,
+    host: HTMLElement
+}
+
 export class CharacterMasterView {
+    private currentPage = 1
+
     constructor(private props: Props) {
-        this.initializeFetch()
+        const { host } = this.props
+
+        ; (async() => {
+            await this.initializeFetch()
+            new InfiniteScroll({ root: host.querySelector('.infinite-scroll-list'), onLoadMore: this.onLoadMore.bind(this), pageSize: 50 })
+        })()
     }
 
     public render(characters: Character[]) {
@@ -23,29 +37,55 @@ export class CharacterMasterView {
 
         if (characters && characters.length > 0) {
             M.render(new PageHeader({ title: `Game of Thrones Characters`, router }), host)
-
-            const uniqueCharacters = Filter.getUniqueArrayByObjectKey<Character>(characters, 'name')
-            const buttons = uniqueCharacters
-                .sort(Sorter.sortByObjectKey<Character>('name'))
-                .map(character => new CharacterButton({ router, character }))
-
-            M.render(new View({ children: [M.create('ol', {}, ...buttons)]}), host)
+            const buttons = this.getCharacterButtons(characters)
+            M.render(new View({ children: [M.create('ol', { 'classList:add': 'infinite-scroll-list' }, ...buttons)]}), host)
         }
+    }
+
+    private async onLoadMore() {
+        const { host } = this.props
+
+        const newCharacters = await this.fetchCharacters({ pageSize: 50, currentPage: this.currentPage, host })
+        const list = host.querySelector('.infinite-scroll-list')
+        const buttons = this.getCharacterButtons(newCharacters)
+
+        if (!list) {
+            return
+        }
+
+        buttons.forEach(button => {
+            M.render(button, list)
+        })
+
+        this.currentPage++
+    }
+
+    private getCharacterButtons(characters: Character[]) {
+        const { router } = this.props
+
+        const uniqueCharacters = Filter.getUniqueArrayByObjectKey<Character>(characters, 'name')
+        return uniqueCharacters
+            .sort(Sorter.sortByObjectKey<Character>('name'))
+            .map(character => new CharacterButton({ router, character }))
     }
 
     private async initializeFetch() {
         const { host } = this.props
-        let characters = []
+        const characters = await this.fetchCharacters({ pageSize: 100, currentPage: 1, host })
 
+        this.render(characters)
+    }
+
+    private async fetchCharacters({ pageSize, currentPage, host }: FetchCharactersProps) {
+        let newCharacters = []
         try {
             M.toggleLoader(host)
-            characters = await fetchCharacters()
+            newCharacters = await fetchCharacters(pageSize, currentPage)
             M.toggleLoader(host)
         } catch (error) {
             console.error(error)
             throw new Error(error)
         }
-
-        this.render(characters)
+        return newCharacters
     }
 }

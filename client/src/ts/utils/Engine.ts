@@ -2,7 +2,7 @@ import { Loader } from '../components/Generic/Loader'
 import { Component } from './Component'
 
 export class M {
-    public static async render(component: HTMLElement | string | Component, host: HTMLElement) {
+    public static async render(component: HTMLElement | string | Component | Element, host: HTMLElement | Element) {
         let _node
         if (typeof component === 'string') {
             _node = document.createTextNode(component)
