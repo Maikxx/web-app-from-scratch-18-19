@@ -78,17 +78,18 @@ To build the client run: `yarn build-client` or `npm run build-client`.
 ## Features
 
 - [X] [A custom-made shadow-DOM and/or templating engine](./client/src/ts/utils/Engine.ts).
-- [x] Enables [routing](./client/src/ts/App.ts) from the detail page of a character to related detail pages (like books and siblings).
-- [x] Enables routing from the list to the detail page of that character.
-- [x] Fully made in TypeScript with, where possible, good [typings](./client/src/ts/types).
 - [X] [Loading states](./client/src/ts/utils/Engine.ts#64).
-- [x] React like coding experience. 🕶️
-- [x] Render a [list of data](./client/src/ts/components/Generic/DataList.ts) from an api.
+- [X] Character pagination.
+- [X] Enables [routing](./client/src/ts/App.ts) from the detail page of a character to related detail pages (like books and siblings).
+- [X] Enables routing from the list to the detail page of that character.
+- [X] Fully made in TypeScript with, where possible, good [typings](./client/src/ts/types).
+- [X] React like coding experience. 🕶️
+- [X] Render a [list of data](./client/src/ts/components/Generic/DataList.ts) from an api.
 - [ ] A semi-decent looking application. 🙈
 - [ ] Multiple apis.
-- [ ] Character pagination.
 - [ ] Data caching.
 - [ ] Filters.
+- [ ] Ability to search for a specific character.
 
 ## Technologies used
 
