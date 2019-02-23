@@ -35,7 +35,7 @@ export class InfiniteScroll {
         this.observedElement = null
     }
 
-    public scrollListener(changes: any[]) {
+    public scrollListener(changes: IntersectionObserverEntry[]) {
         changes.forEach(async change => {
             if (change.intersectionRatio > 0) {
                 const { onLoadMore } = this.props
