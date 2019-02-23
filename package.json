@@ -1,7 +1,8 @@
 {
-  "name": "week1",
+  "name": "web-app-from-scratch",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "client/src/ts/index.ts",
+  "private": true,
   "license": "MIT",
   "devDependencies": {
     "@types/navigo": "^7.0.1",
