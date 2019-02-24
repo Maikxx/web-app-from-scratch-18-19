@@ -17,3 +17,7 @@
 .PageHeader > * + * {
     margin-left: 24px;
 }
+
+.PageHeader__search {
+    margin-left: auto;
+}

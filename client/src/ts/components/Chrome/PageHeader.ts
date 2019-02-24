@@ -20,7 +20,7 @@ export class PageHeader extends Component {
         return M.create('header', { class: 'PageHeader' }, ...[
             M.create('a', { 'event:click': () => router.navigate('/') }, 'Game of Thrones'),
             M.create('h1', { }, title),
-            (onSearch && new Search({ onSearch })),
+            (onSearch && new Search({ onSearch, className: 'PageHeader__search' })),
         ])
     }
 }

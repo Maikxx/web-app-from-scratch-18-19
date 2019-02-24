@@ -50,7 +50,15 @@ export class M {
                 _node.addEventListener(event, value)
             } else if (attribute.includes('classList')) {
                 const [ , action ] = attribute.split(':')
-                _node.classList[action](value.replace(' ', ','))
+
+                if (value.includes(' ')) {
+                    const classNames = value.split(' ')
+                    classNames.forEach((className: string) => {
+                        _node.classList[action](className)
+                    })
+                } else {
+                    _node.classList[action](value)
+                }
             } else {
                 _node.setAttribute(attribute, value)
             }
