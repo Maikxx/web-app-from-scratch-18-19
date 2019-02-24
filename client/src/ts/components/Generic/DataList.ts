@@ -22,7 +22,7 @@ export class DataList extends Component {
         const listElements = await Promise.all(Object.entries(data).map(this.createListElement))
         M.toggleLoader(loaderRoot)
 
-        return M.create('ul', { 'classList:add': 'data-list' }, ...listElements)
+        return M.create('ul', { 'classList:add': 'DataList' }, ...listElements)
     }
 
     private createListElement = async ([ key, value ]: [string, string | string[] | number]) => {
@@ -32,9 +32,9 @@ export class DataList extends Component {
 
         const content = await this.getDataContent(value)
 
-        return M.create('li', {}, ...[
-            M.create('h3', {}, translatedTypes[key]),
-            M.create('p', {}, content),
+        return M.create('li', { 'classList:add': 'DataList__item' }, ...[
+            M.create('h3', { 'classList:add': 'DataList__item-heading' }, translatedTypes[key]),
+            M.create('p', { 'classList:add': 'DataList__item-content' }, content),
         ])
     }
 
@@ -60,27 +60,28 @@ export class DataList extends Component {
 
                 return M.create(
                     'button',
-                    {
-                        'event:click': this.handleLinkClick(data),
-                        'classList:add': 'link',
-                    },
+                    { 'event:click': this.handleLinkClick(data), 'classList:add': 'Link' },
                     data.name
                 )
             } else {
                 if (typeof value !== 'number') {
                     if (Validator.validateDate(value)) {
-                        return new Date(value).toLocaleDateString()
+                        return this.renderItemContentText(new Date(value).toLocaleDateString())
                     } else {
-                        return value
+                        return this.renderItemContentText(value)
                     }
                 } else {
-                    return String(value)
+                    return this.renderItemContentText(String(value))
                 }
             }
         } catch (error) {
             console.error(error)
             throw new Error(error)
         }
+    }
+
+    private renderItemContentText = (content: string) => {
+        return M.create('span', { 'classList:add': 'DataList__item-content-text' }, content)
     }
 
     private handleLinkClick = (data: DetailFetcherData) => {

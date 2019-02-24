@@ -30,7 +30,7 @@ export class CharacterMasterView {
         ; (async() => {
             await this.initializeFetch()
             new InfiniteScroll({
-                root: host.querySelector('.infinite-scroll-list'),
+                root: host.querySelector('.InfiniteScrollList'),
                 onLoadMore: this.onLoadMore.bind(this),
                 pageSize: this.PAGE_SIZE,
             })
@@ -43,7 +43,7 @@ export class CharacterMasterView {
         if (characters && characters.length > 0) {
             M.render(new PageHeader({ title: `Game of Thrones Characters`, router }), host)
             const buttons = this.getCharacterButtons(characters)
-            M.render(new View({ children: [M.create('ol', { 'classList:add': 'infinite-scroll-list' }, ...buttons)]}), host)
+            M.render(new View({ children: [M.create('ol', { 'classList:add': 'InfiniteScrollList' }, ...buttons)]}), host)
         }
     }
 
@@ -51,7 +51,7 @@ export class CharacterMasterView {
         const { host } = this.props
 
         const newCharacters = await this.fetchCharacters({ pageSize: this.PAGE_SIZE, currentPage: this.currentPage, host })
-        const list = host.querySelector('.infinite-scroll-list')
+        const list = host.querySelector('.InfiniteScrollList')
         const buttons = this.getCharacterButtons(newCharacters)
 
         if (!list) {

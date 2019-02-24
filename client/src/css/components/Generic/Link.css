@@ -1,0 +1,26 @@
+.Link {
+    display: block;
+    font-size: inherit;
+    color: #4F8CC4;
+    transition: .2s color ease;
+    cursor: pointer;
+}
+
+.Link:hover {
+    text-decoration: underline;
+    color: #5E8FC9;
+}
+
+.NavLink {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    height: 100%;
+    padding: 24px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.NavLink:hover,
+.NavLink:active {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
