@@ -1,6 +1,6 @@
-import { M } from '../../utils/Engine'
-import { Component } from '../../utils/Component'
-import { Transformer } from '../../utils/Transformer'
+import { M } from '../../../utils/Engine'
+import { Component } from '../../../utils/Component'
+import { Transformer } from '../../../utils/Transformer'
 
 interface Props {
     children: (string | HTMLElement | Component)[]

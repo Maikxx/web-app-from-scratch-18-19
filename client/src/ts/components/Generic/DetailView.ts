@@ -4,7 +4,7 @@ import { DetailFetcherData } from '../../types/Fetchers'
 import { Fetcher } from '../../utils/Fetcher'
 import Navigo from 'navigo'
 import { M } from '../../utils/Engine'
-import { View } from './View'
+import { View } from '../Core/DataDisplay/View'
 
 interface Props {
     host: HTMLElement

@@ -15,21 +15,6 @@ button {
     background-color: transparent;
 }
 
-main ol {
-    list-style: none;
-    display: flex;
-    margin-top: 12px;
-    flex-direction: row;
-    align-items: flex-start;
-    flex-wrap: wrap;
-}
-
-main ol li {
-    width: 12%;
-    padding: 1%;
-    margin-bottom: 12px;
-}
-
 @import './components/Chrome/PageHeader.css';
 @import './components/Generic/DataList.css';
 @import './components/Generic/Link.css';

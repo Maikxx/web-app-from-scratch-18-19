@@ -2,12 +2,13 @@ import { fetchCharacters } from '../fetchers/character'
 import { Character } from '../types/Character'
 import { PageHeader } from '../components/Chrome/PageHeader'
 import { CharacterButton } from '../components/Character/CharacterButton'
-import { View } from '../components/Generic/View'
+import { View } from '../components/Core/DataDisplay/View'
 import { Sorter } from '../utils/Sorter'
 import Navigo from 'navigo'
 import { M } from '../utils/Engine'
 import { Filter } from '../utils/Filter'
 import { InfiniteScroll } from '../utils/InfiniteScroll'
+import { List } from '../components/Core/DataDisplay/List'
 
 interface Props {
     host: HTMLElement
@@ -43,9 +44,26 @@ export class CharacterMasterView {
         const { host, router } = this.props
 
         if (characters && characters.length > 0) {
-            M.render(new PageHeader({ title: `Game of Thrones Characters`, router, onSearch: this.onSearch.bind(this) }), host)
-            const buttons = this.getCharacterButtons(characters)
-            M.render(new View({ children: [M.create('ol', { 'classList:add': 'InfiniteScrollList' }, ...buttons)]}), host)
+            M.render(
+                new PageHeader({
+                    title: `Game of Thrones Characters`,
+                    router,
+                    onSearch: this.onSearch.bind(this),
+                }),
+                host
+            )
+
+            M.render(
+                new View({
+                    children: [
+                        new List({
+                            className: 'InfiniteScrollList',
+                            children: this.getCharacterButtons(characters),
+                        }),
+                    ],
+                }),
+                host
+            )
         }
     }
 

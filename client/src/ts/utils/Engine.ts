@@ -1,4 +1,4 @@
-import { Loader } from '../components/Generic/Loader'
+import { Loader } from '../components/Core/Feedback/Loader'
 import { Component } from './Component'
 
 export class M {

@@ -1,7 +1,7 @@
 import Navigo from 'navigo'
 import { M } from '../../utils/Engine'
 import { Component } from '../../utils/Component'
-import { Search } from '../Generic/Search'
+import { Search } from '../Core/DataEntry/Search'
 
 interface Props {
     onSearch?: (event: Event) => void

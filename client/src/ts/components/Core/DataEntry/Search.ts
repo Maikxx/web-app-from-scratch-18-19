@@ -1,6 +1,6 @@
-import { Component } from '../../utils/Component'
-import { M } from '../../utils/Engine'
-import { Transformer } from '../../utils/Transformer'
+import { Component } from '../../../utils/Component'
+import { M } from '../../../utils/Engine'
+import { Transformer } from '../../../utils/Transformer'
 
 interface Props {
     className?: string
