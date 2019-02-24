@@ -15,9 +15,13 @@ export class Search extends Component {
     public render = () => {
         const { className } = this.props
 
-        return M.create('label', { 'classList:add': Transformer.getClassName('Search', className) }, ...[
-            this.renderInput(),
-        ])
+        return M.create(
+            'label',
+            { 'classList:add': Transformer.getClassName('Search', className) },
+            ...[
+                this.renderInput(),
+            ]
+        )
     }
 
     private renderInput = () => {
