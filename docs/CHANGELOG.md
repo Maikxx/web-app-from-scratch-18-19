@@ -7,3 +7,4 @@
 * Refactor util folder files to class-based components.
 * Add loaders where the application is fetching data.
 * Add infinite scrolling.
+* Add searching for characters.

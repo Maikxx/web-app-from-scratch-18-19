@@ -12,7 +12,7 @@ House detail page | Book detail page
 
 ## Table of Contents
 
-1. [Live demo](#live-demo)
+1. [Live demo](#live-demo-🚀)
 2. [Installation](#installation)
     1. [Pre-install](#pre-install)
     2. [Install](#install)
@@ -22,14 +22,14 @@ House detail page | Book detail page
 4. [Interaction diagram](#interaction-diagram)
     1. [Version 1](#interaction-diagram-version-1)
     2. [Version 2](#interaction-diagram-version-2)
-5. [Features](#features)
-6. [Technologies used](#technologies-used)
+5. [Features](#features-🔥)
+6. [Technologies used](#technologies-used-📦)
 7. [Patterns](#patterns)
 8. [Changelog](#changelog)
 9. [Data sources](#data-sources)
 10. [License](#license)
 
-## Live demo
+## Live demo 🚀
 
 [Link](https://web-app-from-scratch.netlify.com/)
 
@@ -75,23 +75,22 @@ To build the client run: `yarn build-client` or `npm run build-client`.
 
 ![Second iteration of the interaction diagram](docs/assets/interaction-diagram2.png)
 
-## Features
+## Features 🔥
 
 - [X] [A custom-made shadow-DOM and/or templating engine](./client/src/ts/utils/Engine.ts).
 - [X] [Loading states](./client/src/ts/utils/Engine.ts#64).
+- [X] Ability to search for a specific character.
 - [X] Character pagination.
 - [X] Enables [routing](./client/src/ts/App.ts) from the detail page of a character to related detail pages (like books and siblings).
 - [X] Enables routing from the list to the detail page of that character.
 - [X] Fully made in TypeScript with, where possible, good [typings](./client/src/ts/types).
 - [X] React like coding experience. 🕶️
 - [X] Render a [list of data](./client/src/ts/components/Generic/DataList.ts) from an api.
-- [ ] A semi-decent looking application. 🙈
 - [ ] Multiple apis.
 - [ ] Data caching.
 - [ ] Filters.
-- [ ] Ability to search for a specific character.
 
-## Technologies used
+## Technologies used 📦
 
 * [Autoprefixer](https://www.npmjs.com/package/autoprefixer)
 * [Babel polyfill](https://www.npmjs.com/package/babel-polyfill)
