@@ -20,7 +20,7 @@ main ol {
     display: flex;
     margin-top: 12px;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     flex-wrap: wrap;
 }
 
@@ -33,5 +33,6 @@ main ol li {
 @import './components/Chrome/PageHeader.css';
 @import './components/Generic/DataList.css';
 @import './components/Generic/Link.css';
+@import './components/Generic/Search.css';
 @import './components/Generic/Loader.css';
 @import './components/Generic/InfiniteScroll.css';

@@ -1,8 +1,10 @@
 import Navigo from 'navigo'
 import { M } from '../../utils/Engine'
 import { Component } from '../../utils/Component'
+import { Search } from '../Generic/Search'
 
 interface Props {
+    onSearch?: (event: Event) => void
     title: string
     router: Navigo
 }
@@ -13,23 +15,12 @@ export class PageHeader extends Component {
     }
 
     public render = () => {
-        const { title, router } = this.props
+        const { title, router, onSearch } = this.props
 
-        return M.create(
-            'header',
-            { class: 'PageHeader' },
-            ...[
-                M.create(
-                    'a',
-                    { 'event:click': () => router.navigate('/') },
-                    'Game of Thrones'
-                ),
-                M.create(
-                    'h1',
-                    { },
-                    title
-                ),
-            ]
-        )
+        return M.create('header', { class: 'PageHeader' }, ...[
+            M.create('a', { 'event:click': () => router.navigate('/') }, 'Game of Thrones'),
+            M.create('h1', { }, title),
+            (onSearch && new Search({ onSearch })),
+        ])
     }
 }

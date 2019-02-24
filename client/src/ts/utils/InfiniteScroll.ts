@@ -54,6 +54,6 @@ export class InfiniteScroll {
             return
         }
 
-        this.setObservable(this.root.children[this.root.children.length - pageSize])
+        this.setObservable(this.root.children[this.root.children.length - (pageSize / 2)])
     }
 }

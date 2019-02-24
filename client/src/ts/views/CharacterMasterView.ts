@@ -15,21 +15,23 @@ interface Props {
 }
 
 interface FetchCharactersProps {
-    pageSize: number,
-    currentPage: number,
-    host: HTMLElement
+    pageSize: number
+    currentPage: number
+    searchText?: string
 }
 
 export class CharacterMasterView {
     private currentPage = 1
     private PAGE_SIZE = 50
+    private previousSearchValue = ''
+    private infiniteScroll: InfiniteScroll
 
     constructor(private props: Props) {
         const { host } = this.props
 
         ; (async() => {
             await this.initializeFetch()
-            new InfiniteScroll({
+            this.infiniteScroll = new InfiniteScroll({
                 root: host.querySelector('.InfiniteScrollList'),
                 onLoadMore: this.onLoadMore.bind(this),
                 pageSize: this.PAGE_SIZE,
@@ -41,7 +43,7 @@ export class CharacterMasterView {
         const { host, router } = this.props
 
         if (characters && characters.length > 0) {
-            M.render(new PageHeader({ title: `Game of Thrones Characters`, router }), host)
+            M.render(new PageHeader({ title: `Game of Thrones Characters`, router, onSearch: this.onSearch.bind(this) }), host)
             const buttons = this.getCharacterButtons(characters)
             M.render(new View({ children: [M.create('ol', { 'classList:add': 'InfiniteScrollList' }, ...buttons)]}), host)
         }
@@ -50,7 +52,10 @@ export class CharacterMasterView {
     private async onLoadMore() {
         const { host } = this.props
 
-        const newCharacters = await this.fetchCharacters({ pageSize: this.PAGE_SIZE, currentPage: this.currentPage, host })
+        const newCharacters = await this.fetchCharacters({
+            pageSize: this.PAGE_SIZE,
+            currentPage: this.currentPage,
+        })
         const list = host.querySelector('.InfiniteScrollList')
         const buttons = this.getCharacterButtons(newCharacters)
 
@@ -75,22 +80,66 @@ export class CharacterMasterView {
     }
 
     private async initializeFetch() {
-        const { host } = this.props
-        const characters = await this.fetchCharacters({ pageSize: this.PAGE_SIZE, currentPage: 1, host })
+        const characters = await this.fetchCharacters({
+            pageSize: this.PAGE_SIZE,
+            currentPage: 1,
+        })
 
         this.render(characters)
     }
 
-    private async fetchCharacters({ pageSize, currentPage, host }: FetchCharactersProps) {
+    private async fetchCharacters({ pageSize, currentPage, searchText }: FetchCharactersProps) {
+        const { host } = this.props
         let newCharacters = []
+
         try {
             M.toggleLoader(host)
-            newCharacters = await fetchCharacters(pageSize, currentPage)
+            newCharacters = await fetchCharacters(pageSize, currentPage, searchText)
             M.toggleLoader(host)
         } catch (error) {
             console.error(error)
             throw new Error(error)
         }
+
         return newCharacters
+    }
+
+    private async onSearch({ target }: Event) {
+        const { host } = this.props
+
+        if (!target) {
+            return
+        }
+
+        const value = (target as HTMLInputElement).value
+
+        if (value === this.previousSearchValue) {
+            return
+        }
+
+        this.currentPage = 1
+        const searchedCharacters = await this.fetchCharacters({
+            pageSize: this.PAGE_SIZE,
+            currentPage: this.currentPage,
+            searchText: value,
+        })
+        const list = host.querySelector('.InfiniteScrollList')
+
+        if (!list) {
+            return
+        }
+
+        list.innerHTML = ''
+        const buttons = this.getCharacterButtons(searchedCharacters)
+        await Promise.all(buttons.map(button => {
+            M.render(button, list)
+        }))
+
+        if (!value) {
+            this.infiniteScroll.updateObservable()
+            return
+        }
+
+        this.previousSearchValue = value
     }
 }

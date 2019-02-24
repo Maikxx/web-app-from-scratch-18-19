@@ -1,0 +1,13 @@
+.Search {
+    display: block;
+    min-width: 240px;
+    border: 1px solid black;
+}
+
+.Search__input {
+    width: 100%;
+    min-height: 36px;
+    padding: 12px;
+    position: relative;
+    z-index: 1;
+}
