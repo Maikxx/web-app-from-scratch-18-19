@@ -3,6 +3,7 @@ import Navigo from 'navigo'
 import { M } from '../../utils/Engine'
 import { Transformer } from '../../utils/Transformer'
 import { Component } from '../../utils/Component'
+import { Button } from '../Core/DataDisplay/Button'
 
 interface Props {
     router: Navigo
@@ -23,15 +24,12 @@ export class CharacterButton extends Component<Props> {
         }
 
         return M.create('li', {}, ...[
-            M.create(
-                'button',
-                {
-                    className: 'CharacterButton',
-                    'event:click': this.handleLinkClickEvent,
-                },
-                Transformer.capitalize(name)
-            )]
-        )
+            new Button({
+                onClick: this.handleLinkClickEvent.bind(this),
+                className: 'CharacterButton',
+                children: [Transformer.capitalize(name)],
+            }),
+        ])
     }
 
     private handleLinkClickEvent = () => {
