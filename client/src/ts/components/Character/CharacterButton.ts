@@ -1,9 +1,9 @@
 import { Character } from '../../types/Character'
 import Navigo from 'navigo'
-import { M } from '../../utils/Engine'
 import { Transformer } from '../../utils/Transformer'
 import { Component } from '../../utils/Component'
 import { Button } from '../Core/DataDisplay/Button'
+import { ListItem } from '../Core/DataDisplay/ListItem'
 
 interface Props {
     router: Navigo
@@ -23,13 +23,15 @@ export class CharacterButton extends Component<Props> {
             return null
         }
 
-        return M.create('li', {}, ...[
-            new Button({
-                onClick: this.handleLinkClickEvent.bind(this),
-                className: 'CharacterButton',
-                children: [Transformer.capitalize(name)],
-            }),
-        ])
+        return new ListItem({
+            children: [
+                new Button({
+                    onClick: this.handleLinkClickEvent.bind(this),
+                    className: 'CharacterButton',
+                    children: [Transformer.capitalize(name)],
+                }),
+            ],
+        }).render()
     }
 
     private handleLinkClickEvent = () => {

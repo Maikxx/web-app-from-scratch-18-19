@@ -10,6 +10,7 @@ import { Paragraph } from '../Core/DataDisplay/Text/Paragraph'
 import { Transformer } from '../../utils/Transformer'
 import { Button } from '../Core/DataDisplay/Button'
 import { ListItem } from '../Core/DataDisplay/ListItem'
+import { List } from '../Core/DataDisplay/List'
 
 interface Props {
     data: DetailFetcherData
@@ -27,12 +28,15 @@ export class DataList extends Component<Props> {
         const listElements = await Promise.all(Object.entries(data).map(this.createListElement))
         M.toggleLoader(loaderRoot)
 
-        return M.create('ul', { className: 'DataList' }, ...listElements)
+        return new List({
+            children: listElements.filter(el => !!el) as Component<any>[],
+            className: 'DataList',
+        }).render()
     }
 
     private createListElement = async ([ key, value ]: [string, string | string[] | number]) => {
         if (this.shouldHideProperty(key, value)) {
-            return null
+            return
         }
 
         const content = await this.getDataContent(value)
