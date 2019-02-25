@@ -5,6 +5,9 @@ import Navigo from 'navigo'
 import { Validator } from '../../utils/Validator'
 import { M } from '../../utils/Engine'
 import { Component } from '../../utils/Component'
+import { Heading } from '../Core/DataDisplay/Text/Heading'
+import { Paragraph } from '../Core/DataDisplay/Text/Paragraph'
+import { Transformer } from '../../utils/Transformer'
 
 interface Props {
     data: DetailFetcherData
@@ -12,9 +15,9 @@ interface Props {
     loaderRoot: HTMLElement
 }
 
-export class DataList extends Component {
+export class DataList extends Component<Props> {
     constructor(private props: Props) {
-        super()
+        super(props)
     }
 
     public render = async () => {
@@ -33,8 +36,15 @@ export class DataList extends Component {
         const content = await this.getDataContent(value)
 
         return M.create('li', { 'classList:add': 'DataList__item' }, ...[
-            M.create('h3', { 'classList:add': 'DataList__item-heading' }, translatedTypes[key]),
-            M.create('p', { 'classList:add': 'DataList__item-content' }, content),
+            new Heading({
+                level: 3,
+                className: 'DataList__item-heading',
+                children: [translatedTypes[key]],
+            }),
+            new Paragraph({
+                className: 'DataList__item-content',
+                children: [Transformer.flattenDeep(content)],
+            }),
         ])
     }
 

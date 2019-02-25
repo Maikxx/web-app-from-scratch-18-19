@@ -4,34 +4,39 @@ import { Transformer } from '../../../utils/Transformer'
 
 interface Props {
     className?: string
+    placeholder?: string
     onSearch: (event: Event) => void
 }
 
-export class Search extends Component {
+export class Search extends Component<Props> {
     constructor(private props: Props) {
-        super()
+        super(props)
     }
 
     public render = () => {
-        const { className } = this.props
-
         return M.create(
             'label',
-            { 'classList:add': Transformer.getClassName('Search', className) },
+            { 'classList:add': this.getClassName() },
             ...[
                 this.renderInput(),
             ]
         )
     }
 
-    private renderInput = () => {
-        const { onSearch } = this.props
+    private renderInput() {
+        const { onSearch, placeholder } = this.props
         const inputProperties = {
             'classList:add': 'Search__input',
             'event:keyup': onSearch,
-            placeholder: 'Search...',
+            placeholder: placeholder || 'Search...',
         }
 
         return M.create('input', inputProperties)
+    }
+
+    private getClassName() {
+        const { className } = this.props
+
+        return Transformer.getClassName('Search', className)
     }
 }

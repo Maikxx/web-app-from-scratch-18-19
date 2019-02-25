@@ -1,33 +1,37 @@
-import { Component } from '../../../utils/Component'
+import { Component, DefaultProps } from '../../../utils/Component'
 import { M } from '../../../utils/Engine'
 import { Transformer } from '../../../utils/Transformer'
 
-interface Props {
-    className?: string
-    children: (string | HTMLElement | Component)[]
+interface Props extends DefaultProps<Props> {
     isOrdered?: boolean
 }
 
-export class List extends Component {
+export class List extends Component<Props> {
     constructor(private props: Props) {
-        super()
+        super(props)
     }
 
     public render = () => {
-        const { children, className } = this.props
+        const { children } = this.props
 
         return M.create(
             this.getListType(),
-            { 'classList:add': Transformer.getClassName('List', className) },
+            { 'classList:add': this.getClassNames() },
             ...children
         )
     }
 
-    private getListType = () => {
+    private getListType() {
         const { isOrdered } = this.props
 
         return isOrdered
             ? 'ol'
             : 'ul'
+    }
+
+    private getClassNames() {
+        const { className } = this.props
+
+        return Transformer.getClassName('List', className)
     }
 }

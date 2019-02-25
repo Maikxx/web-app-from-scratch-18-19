@@ -2,7 +2,7 @@ import { Loader } from '../components/Core/Feedback/Loader'
 import { Component } from './Component'
 
 export class M {
-    public static async render(component: HTMLElement | string | Component | Element, host: HTMLElement | Element) {
+    public static async render(component: HTMLElement | string | Component<any> | Element, host: HTMLElement | Element) {
         let _node
         if (typeof component === 'string') {
             _node = document.createTextNode(component)
@@ -72,7 +72,7 @@ export class M {
     public static toggleLoader(host: HTMLElement) {
         const loaderElement = host.querySelector('.Loader')
         if (!loaderElement) {
-            M.render(new Loader(), host)
+            M.render(new Loader({}), host)
         } else {
             host.removeChild(loaderElement)
         }

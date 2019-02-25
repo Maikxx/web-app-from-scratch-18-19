@@ -1,24 +1,27 @@
 import { M } from '../../../utils/Engine'
-import { Component } from '../../../utils/Component'
+import { Component, DefaultProps } from '../../../utils/Component'
 import { Transformer } from '../../../utils/Transformer'
 
-interface Props {
-    children: (string | HTMLElement | Component)[]
-    className?: string
-}
+interface Props extends DefaultProps<Props> {}
 
-export class View extends Component {
+export class View extends Component<Props> {
     constructor(private props: Props) {
-        super()
+        super(props)
     }
 
     public render = () => {
-        const { children, className } = this.props
+        const { children } = this.props
 
         return M.create(
             'section',
-            { 'classList:add': Transformer.getClassName('View', className) },
+            { 'classList:add': this.getClassNames() },
             ...children
         )
+    }
+
+    private getClassNames() {
+        const { className } = this.props
+
+        return Transformer.getClassName('View', className)
     }
 }

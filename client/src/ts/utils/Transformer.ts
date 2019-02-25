@@ -10,4 +10,10 @@ export class Transformer {
             ? `${baseClassNames} ${className}`
             : baseClassNames
     }
+
+    public static flattenDeep = (arr: any): any => {
+        return Array.isArray(arr)
+            ? arr.reduce((a, b) => a.concat(Transformer.flattenDeep(b)), [])
+            : arr
+    }
 }

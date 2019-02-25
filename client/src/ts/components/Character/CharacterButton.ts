@@ -9,16 +9,16 @@ interface Props {
     character: Character
 }
 
-export class CharacterButton extends Component {
+export class CharacterButton extends Component<Props> {
     constructor(private props: Props) {
-        super()
+        super(props)
     }
 
     public render = () => {
         const { character } = this.props
         const { name } = character
 
-        if (!name || !name.length) {
+        if (!name || name.length === 0) {
             return null
         }
 
@@ -26,7 +26,7 @@ export class CharacterButton extends Component {
             M.create(
                 'button',
                 {
-                    'classList:add': 'NavLink',
+                    'classList:add': 'CharacterButton',
                     'event:click': this.handleLinkClickEvent,
                 },
                 Transformer.capitalize(name)
