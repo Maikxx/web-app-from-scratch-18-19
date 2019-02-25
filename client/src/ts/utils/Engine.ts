@@ -28,7 +28,6 @@ export class M {
             : document.createElement(component)
 
         if (properties) {
-            // Properties are set on the attribute, this might not always be what the user wants.
             // TODO: Look into ways in which we check for valid attributes for a given node before assigning.
             Object.entries(properties).forEach(M.parseAttribute(_node))
         }
