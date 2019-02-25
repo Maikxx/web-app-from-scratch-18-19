@@ -8,6 +8,8 @@ import { Component } from '../../utils/Component'
 import { Heading } from '../Core/DataDisplay/Text/Heading'
 import { Paragraph } from '../Core/DataDisplay/Text/Paragraph'
 import { Transformer } from '../../utils/Transformer'
+import { Button } from '../Core/DataDisplay/Button'
+import { ListItem } from '../Core/DataDisplay/ListItem'
 
 interface Props {
     data: DetailFetcherData
@@ -35,17 +37,20 @@ export class DataList extends Component<Props> {
 
         const content = await this.getDataContent(value)
 
-        return M.create('li', { 'classList:add': 'DataList__item' }, ...[
-            new Heading({
-                level: 3,
-                className: 'DataList__item-heading',
-                children: [translatedTypes[key]],
-            }),
-            new Paragraph({
-                className: 'DataList__item-content',
-                children: [Transformer.flattenDeep(content)],
-            }),
-        ])
+        return new ListItem({
+            className: 'DataList__item',
+            children: [
+                new Heading({
+                    level: 3,
+                    className: 'DataList__item-heading',
+                    children: [translatedTypes[key]],
+                }),
+                new Paragraph({
+                    className: 'DataList__item-content',
+                    children: [Transformer.flattenDeep(content)],
+                }),
+            ],
+        })
     }
 
     private shouldHideProperty = (key: string, value: string | string[] | number) => {
@@ -68,11 +73,11 @@ export class DataList extends Component<Props> {
             if (typeof value !== 'number' && value.includes('https://')) {
                 const data = await new Fetcher({ url: value }).fetch() as DetailFetcherData
 
-                return M.create(
-                    'button',
-                    { 'event:click': this.handleLinkClick(data), 'classList:add': 'Link' },
-                    data.name
-                )
+                return new Button({
+                    onClick: this.handleLinkClick(data),
+                    className: 'Link',
+                    children: [data.name],
+                })
             } else {
                 if (typeof value !== 'number') {
                     if (Validator.validateDate(value)) {
@@ -91,7 +96,10 @@ export class DataList extends Component<Props> {
     }
 
     private renderItemContentText = (content: string) => {
-        return M.create('span', { 'classList:add': 'DataList__item-content-text' }, content)
+        return new Paragraph({
+            className: 'DataList__item-content-text',
+            children: [content],
+        })
     }
 
     private handleLinkClick = (data: DetailFetcherData) => {
