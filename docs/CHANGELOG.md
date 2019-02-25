@@ -8,3 +8,4 @@
 * Add loaders where the application is fetching data.
 * Add infinite scrolling.
 * Add searching for characters.
+* Add attribute check in the Engine.

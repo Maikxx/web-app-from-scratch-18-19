@@ -1,5 +1,6 @@
 import { Loader } from '../components/Core/Feedback/Loader'
 import { Component } from './Component'
+import { Validator } from './Validator'
 
 export class M {
     public static async render(component: HTMLElement | string | Component<any> | Element, host: HTMLElement | Element) {
@@ -28,7 +29,6 @@ export class M {
             : document.createElement(component)
 
         if (properties) {
-            // TODO: Look into ways in which we check for valid attributes for a given node before assigning.
             Object.entries(properties).forEach(M.parseAttribute(_node))
         }
 
@@ -43,23 +43,24 @@ export class M {
     }
 
     public static parseAttribute(_node: HTMLElement) {
-        return function ([ attribute, value ]: [string, any]) {
+        return function ([ attribute, attributeValue ]: [string, any]) {
             if (attribute.includes('event:')) {
                 const [ , event ] = attribute.split(':')
-                _node.addEventListener(event, value)
+                _node.addEventListener(event, attributeValue)
             } else if (attribute.includes('classList')) {
                 const [ , action ] = attribute.split(':')
 
-                if (value.includes(' ')) {
-                    const classNames = value.split(' ')
+                if (attributeValue.includes(' ')) {
+                    const classNames = attributeValue.split(' ')
                     classNames.forEach((className: string) => {
                         _node.classList[action](className)
                     })
                 } else {
-                    _node.classList[action](value)
+                    _node.classList[action](attributeValue)
                 }
             } else {
-                _node.setAttribute(attribute, value)
+                Validator.validateAttribute(attribute, _node.tagName)
+                _node.setAttribute(attribute, attributeValue)
             }
         }
     }
