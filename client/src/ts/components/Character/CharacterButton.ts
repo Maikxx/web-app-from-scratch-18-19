@@ -26,7 +26,7 @@ export class CharacterButton extends Component<Props> {
             M.create(
                 'button',
                 {
-                    'classList:add': 'CharacterButton',
+                    className: 'CharacterButton',
                     'event:click': this.handleLinkClickEvent,
                 },
                 Transformer.capitalize(name)

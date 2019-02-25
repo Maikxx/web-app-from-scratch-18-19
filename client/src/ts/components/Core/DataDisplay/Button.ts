@@ -15,7 +15,7 @@ export class Button extends Component<Props> {
         const { children, onClick } = this.props
 
         return M.create('button', {
-            'classList:add': this.getClassNames(),
+            className: this.getClassNames(),
             ...(onClick ? { 'event:click': onClick } : null),
         }, ...children)
     }

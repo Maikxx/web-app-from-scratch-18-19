@@ -13,7 +13,7 @@ export class Paragraph extends Component<Props> {
         const { children } = this.props
 
         return M.create('p', {
-            'classList:add': this.getClassNames(),
+            className: this.getClassNames(),
         }, ...children)
     }
 

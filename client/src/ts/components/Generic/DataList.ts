@@ -27,7 +27,7 @@ export class DataList extends Component<Props> {
         const listElements = await Promise.all(Object.entries(data).map(this.createListElement))
         M.toggleLoader(loaderRoot)
 
-        return M.create('ul', { 'classList:add': 'DataList' }, ...listElements)
+        return M.create('ul', { className: 'DataList' }, ...listElements)
     }
 
     private createListElement = async ([ key, value ]: [string, string | string[] | number]) => {

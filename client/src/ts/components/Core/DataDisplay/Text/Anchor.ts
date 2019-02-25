@@ -16,7 +16,7 @@ export class Anchor extends Component<Props> {
 
         return M.create('a', {
             'event:click': onClick,
-            'classList:add': this.getClassNames(),
+            className: this.getClassNames(),
         }, ...children)
     }
 

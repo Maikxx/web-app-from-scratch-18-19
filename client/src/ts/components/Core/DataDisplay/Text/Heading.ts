@@ -15,7 +15,7 @@ export class Heading extends Component<Props> {
         const { children } = this.props
 
         return M.create(this.getComponentType(), {
-            'classList:add': this.getClassNames(),
+            className: this.getClassNames(),
         }, ...children)
     }
 

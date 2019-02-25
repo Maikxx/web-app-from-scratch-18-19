@@ -16,7 +16,7 @@ export class Search extends Component<Props> {
     public render = () => {
         return M.create(
             'label',
-            { 'classList:add': this.getClassName() },
+            { className: this.getClassName() },
             ...[
                 this.renderInput(),
             ]
@@ -26,7 +26,7 @@ export class Search extends Component<Props> {
     private renderInput() {
         const { onSearch, placeholder } = this.props
         const inputProperties = {
-            'classList:add': 'Search__input',
+            className: 'Search__input',
             'event:keyup': onSearch,
             placeholder: placeholder || 'Search...',
         }

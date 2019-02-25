@@ -16,7 +16,7 @@ export class List extends Component<Props> {
 
         return M.create(
             this.getListType(),
-            { 'classList:add': this.getClassNames() },
+            { className: this.getClassNames() },
             ...children
         )
     }

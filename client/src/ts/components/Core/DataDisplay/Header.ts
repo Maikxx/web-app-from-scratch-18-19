@@ -13,7 +13,7 @@ export class Header extends Component<Props> {
         const { children } = this.props
 
         return M.create('header', {
-            'classList:add': this.getClassNames(),
+            className: this.getClassNames(),
         }, ...children)
     }
 

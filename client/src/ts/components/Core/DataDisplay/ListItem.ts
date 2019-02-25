@@ -14,7 +14,7 @@ export class ListItem extends Component<Props> {
 
         return M.create(
             'li',
-            { 'classList:add': this.getClassNames() },
+            { className: this.getClassNames() },
             ...children
         )
     }

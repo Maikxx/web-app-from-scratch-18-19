@@ -47,17 +47,8 @@ export class M {
             if (attribute.includes('event:')) {
                 const [ , event ] = attribute.split(':')
                 _node.addEventListener(event, attributeValue)
-            } else if (attribute.includes('classList')) {
-                const [ , action ] = attribute.split(':')
-
-                if (attributeValue.includes(' ')) {
-                    const classNames = attributeValue.split(' ')
-                    classNames.forEach((className: string) => {
-                        _node.classList[action](className)
-                    })
-                } else {
-                    _node.classList[action](attributeValue)
-                }
+            } else if (attribute.includes('className')) {
+                _node.setAttribute('class', attributeValue)
             } else {
                 Validator.validateAttribute(attribute, _node.tagName)
                 _node.setAttribute(attribute, attributeValue)

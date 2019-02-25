@@ -12,7 +12,7 @@ export class Loader extends Component<Props> {
     }
 
     public render = () => {
-        return M.create('i', { 'classList:add': this.getClassNames() })
+        return M.create('i', { className: this.getClassNames() })
     }
 
     private getClassNames() {

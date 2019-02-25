@@ -14,7 +14,7 @@ export class View extends Component<Props> {
 
         return M.create(
             'section',
-            { 'classList:add': this.getClassNames() },
+            { className: this.getClassNames() },
             ...children
         )
     }
