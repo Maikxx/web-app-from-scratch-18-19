@@ -12,7 +12,7 @@ House detail page | Book detail page
 
 ## Table of Contents
 
-1. [Live demo](#live-demo-🚀)
+1. [Live demo 🚀](#live-demo)
 2. [Installation](#installation)
     1. [Pre-install](#pre-install)
     2. [Install](#install)
@@ -22,21 +22,21 @@ House detail page | Book detail page
 4. [Interaction diagram](#interaction-diagram)
     1. [Version 1](#interaction-diagram-version-1)
     2. [Version 2](#interaction-diagram-version-2)
-5. [Features](#features-🔥)
-    1. [Features required by this course ✅](#features-required-by-this-course-✅)
+5. [Features 🔥](#features)
+    1. [Features required by this course ✅](#features-required-by-this-course)
         1. [Week 1](#week-1)
         2. [Week 2](#week-2)
         3. [Week 3](#week-3)
-    2. [Features beyond the scope of this course 🚀🌔](#features-beyond-the-scope-of-this-course-🚀🌔)
-6. [Technologies used](#technologies-used-📦)
+    2. [Features beyond the scope of this course 🚀🌔](#features-beyond-the-scope-of-this-course)
+6. [Technologies used 📦](#technologies-used)
 7. [Patterns](#patterns)
 8. [Changelog](#changelog)
 9. [Data sources](#data-sources)
 10. [License](#license)
 
-## Live demo 🚀
+## Live demo
 
-[Link](https://web-app-from-scratch.netlify.com/)
+[🚀  Link  🚀](https://web-app-from-scratch.netlify.com/)
 
 ## Installation
 
@@ -80,9 +80,9 @@ To build the client run: `yarn build-client` or `npm run build-client`.
 
 ![Second iteration of the interaction diagram](docs/assets/interaction-diagram2.png)
 
-## Features 🔥
+## Features
 
-### Features required by this course ✅
+### Features required by this course
 
 #### Week 1
 
@@ -106,7 +106,7 @@ To build the client run: `yarn build-client` or `npm run build-client`.
 - [X] [Loading states](./client/src/ts/utils/Engine.ts#72).
 - [X] Code splitting was setup from the start.
 
-### Features beyond the scope of this course 🚀🌔
+### Features beyond the scope of this course
 
 - [X] [A custom shadow-DOM / templating engine](./client/src/ts/utils/Engine.ts).
 - [X] Ability to search in the API.
@@ -116,7 +116,7 @@ To build the client run: `yarn build-client` or `npm run build-client`.
 - [X] [Pagination](./client/src/ts/utils/InfiniteScroll.ts).
 - [X] Set up using a [build tool](https://parceljs.org).
 
-## Technologies used 📦
+## Technologies used
 
 * [Autoprefixer](https://www.npmjs.com/package/autoprefixer).
 * [Babel polyfill](https://www.npmjs.com/package/babel-polyfill).
