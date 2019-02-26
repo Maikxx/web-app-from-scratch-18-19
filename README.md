@@ -133,6 +133,7 @@ To build the client run: `yarn build-client` or `npm run build-client`.
 * Factories
 * Private class data
 * Observer
+<!-- TODO improve this section -->
 
 ## Changelog
 
@@ -143,7 +144,7 @@ For a changelog, please refer to [this file](./docs/CHANGELOG.md).
 * [APIOfFireAndIce](https://anapioficeandfire.com/)
     This is a Game of Thrones API providing a lot of information about Game of Thrones characters, books, houses and more.
 
-    This API has no authentication, but has got a few limits:
+    This API does not require authentication, but has got a few limits:
     * Rate limit of 20000 requests made per day, per IP-address.
     * 50 requests per page maximum.
     * Is not zero-based.
