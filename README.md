@@ -23,6 +23,11 @@ House detail page | Book detail page
     1. [Version 1](#interaction-diagram-version-1)
     2. [Version 2](#interaction-diagram-version-2)
 5. [Features](#features-🔥)
+    1. [Features required by this course ✅](#features-required-by-this-course-✅)
+        1. [Week 1](#week-1)
+        2. [Week 2](#week-2)
+        3. [Week 3](#week-3)
+    2. [Features beyond the scope of this course 🚀🌔](#features-beyond-the-scope-of-this-course-🚀🌔)
 6. [Technologies used](#technologies-used-📦)
 7. [Patterns](#patterns)
 8. [Changelog](#changelog)
@@ -77,28 +82,51 @@ To build the client run: `yarn build-client` or `npm run build-client`.
 
 ## Features 🔥
 
-- [X] [A custom-made shadow-DOM and/or templating engine](./client/src/ts/utils/Engine.ts).
+### Features required by this course ✅
+
+#### Week 1
+
+- [X] Used the (boilerplate) of the [repository of this course](https://github.com/cmda-minor-web/web-app-from-scratch-1819) as a base for this repository.
+- [X] A good README document.
+- [X] [Load data from an API asynchronous](./client/src/ts/utils/Fetcher.ts).
+- [X] Render a [list of data](./client/src/ts/components/Generic/DataList.ts) from an API 🐒.
+- [X] Created multiple issues in the repository of [Chelsea Doeleman](https://github.com/chelseadoeleman/web-app-from-scratch-18-19) and generally helped a lot of people during this course.
+
+#### Week 2
+
+- [X] Create an actor diagram.
+- [X] Create an interaction diagram.
+- [X] Refactor code, just take a gander at the amount of [commits](https://github.com/Maikxx/web-app-from-scratch-18-19/commits/master) I made with the prefix `refactor`.
+- [X] [Routing](./client/src/ts/App.ts) between pages.
+- [X] Implement or build a template engine (take a look at the next section).
+
+#### Week 3
+
+- [X] Manipulate data from the API, [transformer](./client/src/ts/utils/Transformer.ts), [filter](./client/src/ts/utils/Filter.ts), [sorter](./client/src/ts/utils/Sorter.ts), [data-translations](./client/src/ts/translations/translatedTypes.ts).
 - [X] [Loading states](./client/src/ts/utils/Engine.ts#72).
-- [X] Ability to search for a specific character.
-- [X] Character pagination.
-- [X] Enables [routing](./client/src/ts/App.ts) from the detail page of a character to related detail pages (like books and siblings).
-- [X] Enables routing from the list to the detail page of that character.
+- [X] Code splitting was setup from the start.
+
+### Features beyond the scope of this course 🚀🌔
+
+- [X] [A custom shadow-DOM / templating engine](./client/src/ts/utils/Engine.ts).
+- [X] Ability to search in the API.
+- [X] Create a React like development experience. 🕶️
 - [X] [Filter attributes and properties passed to the engine based on existence](./client/src/ts/utils/Engine.ts#62).
-- [X] Fully made in TypeScript with, where possible, good [typings](./client/src/ts/types).
-- [X] React like coding experience. 🕶️
-- [X] Render a [list of data](./client/src/ts/components/Generic/DataList.ts) from an api.
+- [X] Fully written in [TypeScript](https://www.typescriptlang.org).
+- [X] [Pagination](./client/src/ts/utils/InfiniteScroll.ts).
+- [X] Set up using a [build tool](https://parceljs.org).
 
 ## Technologies used 📦
 
-* [Autoprefixer](https://www.npmjs.com/package/autoprefixer)
-* [Babel polyfill](https://www.npmjs.com/package/babel-polyfill)
-* [BabelJS](https://babeljs.io)
-* [Concurrently](https://www.npmjs.com/package/concurrently)
+* [Autoprefixer](https://www.npmjs.com/package/autoprefixer).
+* [Babel polyfill](https://www.npmjs.com/package/babel-polyfill).
+* [BabelJS](https://babeljs.io).
+* [Concurrently](https://www.npmjs.com/package/concurrently).
 * [Navigo](https://github.com/krasimir/navigo) - A router on which I based my initial [Router](./client/src/ts/utils/Router.ts), which I now no longer use, but just keep for when I might want to continue with this.
-* [ParcelJS](https://parceljs.org)
-* [TypeScript](https://www.typescriptlang.org)
-* [Wait-on](https://www.npmjs.com/package/wait-on)
-* [Yarn](https://yarnpkg.com/en/)
+* [ParcelJS](https://parceljs.org).
+* [TypeScript](https://www.typescriptlang.org).
+* [Wait-on](https://www.npmjs.com/package/wait-on).
+* [Yarn](https://yarnpkg.com/en/).
 
 ## Patterns
 
