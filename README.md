@@ -140,6 +140,7 @@ To build the client run: `yarn build-client` or `npm run build-client`.
 - [X] [Pagination](./client/src/ts/utils/InfiniteScroll.ts).
 - [X] Set up using a [build tool](https://parceljs.org).
 - [X] Data persistence on detail pages on revisit. (Data persistence on the paginated [master view](./client/src/ts/views/CharacterMasterView.ts) is another beast that is way more difficult, hence not included yet.)
+- [X] [Recursive data cleaning](./client/src/ts/utils/Transformer.ts).
 
 ## Technologies used
 

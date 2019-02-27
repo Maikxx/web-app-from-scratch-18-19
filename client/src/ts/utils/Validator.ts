@@ -7,7 +7,11 @@ export class Validator {
     }
 
     public static isObject(subject: any) {
-        return subject === Object(subject)
+        return !Array.isArray(subject) && subject === Object(subject)
+    }
+
+    public static isTypeOf(value: any, type: string) {
+        return typeof value === type
     }
 
     public static validateAttribute(attribute: any, tagName: string) {
@@ -25,5 +29,9 @@ export class Validator {
                 You have passed an invalid property called: ${attribute} to ${tagName}.
             `)
         }
+    }
+
+    public static isTruthyArray(value: any) {
+        return Array.isArray(value) && value.length > 0
     }
 }

@@ -34,15 +34,8 @@ export class DataList extends Component<Props> {
         }).render()
     }
 
-    private shouldHideProperty = (key: string, value: string | string[] | number) => {
-        return !value
-            || (typeof value !== 'number' && value.length === 0)
-            || (Array.isArray(value) && !value[0])
-            || (key === 'url' || key === 'name' || key === 'id')
-    }
-
     private createListElement = async ([ key, value ]: [string, string | string[] | number]) => {
-        if (this.shouldHideProperty(key, value)) {
+        if (key === 'url' || key === 'name' || key === 'id') {
             return
         }
 
@@ -75,7 +68,7 @@ export class DataList extends Component<Props> {
     private getContentValue = (value: string | number | any) => {
         const { router } = this.props
 
-        if (typeof value !== 'number' && Validator.isObject(value)) {
+        if (!Validator.isTypeOf(value, 'number') && Validator.isObject(value)) {
             return new Button({
                 onClick: () => {
                     const [ id, path ] = value.url.split('/').reverse()
@@ -86,7 +79,7 @@ export class DataList extends Component<Props> {
             })
         } else {
             let content
-            if (typeof value !== 'number') {
+            if (Validator.isTypeOf(value, 'number')) {
                 content = Validator.validateDate(value)
                     ? new Date(value).toLocaleDateString()
                     : value

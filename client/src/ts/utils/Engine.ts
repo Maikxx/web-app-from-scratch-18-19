@@ -5,8 +5,8 @@ import { Validator } from './Validator'
 export class M {
     public static async render(component: HTMLElement | string | Component<any> | Element, host: HTMLElement | Element) {
         let _node
-        if (typeof component === 'string') {
-            _node = document.createTextNode(component)
+        if (Validator.isTypeOf(component, 'string')) {
+            _node = document.createTextNode(component as string)
         } else if (component instanceof Component) {
             const content = await component.render()
             _node = content
@@ -18,15 +18,15 @@ export class M {
             return null
         }
 
-        host.appendChild(_node)
+        host.appendChild(_node as Element)
 
         return host
     }
 
     public static create(component: string | Function, properties: Object, ...children: any[]) {
-        const _node: HTMLElement = typeof component === 'function'
-            ? component(properties, children)
-            : document.createElement(component)
+        const _node: HTMLElement = Validator.isTypeOf(component, 'function')
+            ? (component as any)(properties, children)
+            : document.createElement(component as string)
 
         if (properties) {
             Object.entries(properties).forEach(M.parseAttribute(_node))

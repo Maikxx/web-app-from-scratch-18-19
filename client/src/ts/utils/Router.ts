@@ -1,3 +1,5 @@
+import { Validator } from './Validator'
+
 export interface Route {
     regex: any
     resolver: (args?: any) => void
@@ -42,7 +44,7 @@ export class Router {
     }
 
     public addRoute(regex: any, resolver: any) {
-        if (typeof regex === 'function') {
+        if (Validator.isTypeOf(regex, 'function')) {
             resolver = regex
             regex = ''
         }

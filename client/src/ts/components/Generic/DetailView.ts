@@ -62,7 +62,9 @@ export class DetailView {
 
         try {
             const data = await new Fetcher({ url }).fetch() as DetailFetcherData
-            const transformedData = await this.getNestedData(Transformer.addIdToObject(id, data), localStorageService)
+            const dataWithNestedData = await this.getNestedData(Transformer.addIdToObject(id, data), localStorageService)
+            const transformedData = Transformer.deepCleanObject(dataWithNestedData)
+            console.log(transformedData)
 
             this.renderWithData(transformedData)
 
@@ -101,16 +103,22 @@ export class DetailView {
         const [ id, pathAsKey ] = value.split('/').reverse()
         const existingData = localStorageService.getDataById(pathAsKey, id)
 
-        if (!existingData) {
-            const [ id, pathAsKey ] = value.split('/').reverse()
-            const url = `https://anapioficeandfire.com/api/${pathAsKey}/${id}`
-            const data = await new Fetcher({ url }).fetch() as DetailFetcherData
+        try {
+            if (!existingData) {
+                const [ id, pathAsKey ] = value.split('/').reverse()
+                const url = `https://anapioficeandfire.com/api/${pathAsKey}/${id}`
+                const data = await new Fetcher({ url }).fetch() as DetailFetcherData
+                const transformedData = Transformer.deepCleanObject(data)
 
-            localStorageService.merge(pathAsKey, data)
+                localStorageService.merge(pathAsKey, transformedData)
 
-            return data
-        } else {
-            return existingData
+                return transformedData
+            } else {
+                return existingData
+            }
+        } catch (error) {
+            console.error(error)
+            throw new Error(error)
         }
     }
 }

@@ -1,3 +1,5 @@
+import { Validator } from './Validator'
+
 interface InfiniteScrollProps {
     root: string | HTMLElement | null | Element
     onLoadMore: () => Promise<void>
@@ -12,8 +14,8 @@ export class InfiniteScroll {
     constructor(private props: InfiniteScrollProps) {
         const { root } = this.props
 
-        if (typeof root === 'string') {
-            this.root = document.querySelector(root) as HTMLElement
+        if (Validator.isTypeOf(root, 'string')) {
+            this.root = document.querySelector(root as string) as HTMLElement
         } else {
             this.root = root as HTMLElement
         }
