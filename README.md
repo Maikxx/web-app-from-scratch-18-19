@@ -19,6 +19,7 @@ House detail page | Book detail page
 3. [Actor flow](#actor-flow)
     1. [Version 1](#actor-flow-version-1)
     2. [Version 2](#actor-flow-version-2)
+    2. [Version 3](#actor-flow-version-3)
 4. [Interaction diagram](#interaction-diagram)
     1. [Version 1](#interaction-diagram-version-1)
     2. [Version 2](#interaction-diagram-version-2)
@@ -66,6 +67,10 @@ To build the client run: `yarn build-client` or `npm run build-client`.
 ### Actor flow version 2
 
 ![Second iteration of the actor flow diagram](docs/assets/actor-flow2.png)
+
+### Actor flow version 3
+
+![Third iteration of the actor flow diagram](docs/assets/actor-flow3.png)
 
 ## Interaction diagram
 
