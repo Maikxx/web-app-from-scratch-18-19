@@ -9,3 +9,4 @@
 * Add infinite scrolling.
 * Add searching for characters.
 * Add attribute check in the Engine.
+* Add [data persistence](../client/src/ts/utils/LocalStorageService.ts) on the detail pages on revisit.

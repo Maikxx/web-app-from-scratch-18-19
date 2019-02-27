@@ -16,4 +16,11 @@ export class Transformer {
             ? arr.reduce((a, b) => a.concat(Transformer.flattenDeep(b)), [])
             : arr
     }
+
+    public static addIdToObject(id: string, object: Object) {
+        return {
+            ...object,
+            id,
+        }
+    }
 }

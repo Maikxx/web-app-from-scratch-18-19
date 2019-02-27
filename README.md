@@ -118,11 +118,12 @@ To build the client run: `yarn build-client` or `npm run build-client`.
 
 - [X] [A custom shadow-DOM / templating engine](./client/src/ts/utils/Engine.ts).
 - [X] Ability to search in the API.
-- [X] Create a React like development experience. 🕶️
+- [X] A React like development experience. 🕶️
 - [X] [Filter attributes and properties passed to the engine based on existence](./client/src/ts/utils/Engine.ts#62).
 - [X] Fully written in [TypeScript](https://www.typescriptlang.org).
 - [X] [Pagination](./client/src/ts/utils/InfiniteScroll.ts).
 - [X] Set up using a [build tool](https://parceljs.org).
+- [X] Data persistence on detail pages on revisit. (Data persistence on the paginated [master view](./client/src/ts/views/CharacterMasterView.ts) is another beast that is way more difficult, hence not included yet.)
 
 ## Technologies used
 

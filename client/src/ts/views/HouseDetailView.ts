@@ -1,5 +1,6 @@
 import { DetailView } from '../components/Generic/DetailView'
 import Navigo from 'navigo'
+import { LocalStorageService } from '../utils/LocalStorageService'
 
 interface Props {
     host: HTMLElement
@@ -14,8 +15,7 @@ export class HouseDetailView {
 
     public render() {
         const { host, router, id } = this.props
-        const url = `https://anapioficeandfire.com/api/characters/${id}`
 
-        new DetailView({ router, host, url })
+        new DetailView({ router, host, id, localStorageKey: LocalStorageService.housesKey })
     }
 }

@@ -61,7 +61,7 @@ export class DataList extends Component<Props> {
         return !value
             || (typeof value !== 'number' && value.length === 0)
             || (Array.isArray(value) && !value[0])
-            || key === 'url' || key === 'name'
+            || key === 'url' || key === 'name' || key === 'id'
     }
 
     private getDataContent = async (value: string | string[] | number) => {

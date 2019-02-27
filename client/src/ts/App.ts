@@ -4,9 +4,11 @@ import { handleCharacterDetailRoute } from './routes/characters/detailRoute'
 import { handleHouseDetailRoute } from './routes/houses/detailRoute'
 import { handleBookDetailRoute } from './routes/books/detailRoute'
 import Navigo from 'navigo'
+import { LocalStorageService } from './utils/LocalStorageService'
 
 export class App {
     constructor() {
+        new LocalStorageService().initialize()
         this.initializeRouter()
     }
 
