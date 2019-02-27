@@ -9,7 +9,7 @@ import { Heading } from '../Core/DataDisplay/Text/Heading'
 import { Paragraph } from '../Core/DataDisplay/Text/Paragraph'
 import { Transformer } from '../../utils/Transformer'
 import { Button } from '../Core/DataDisplay/Button'
-import { ListItem } from '../Core/DataDisplay/ListItem'
+import { ListItem, ListItemProps } from '../Core/DataDisplay/ListItem'
 import { List } from '../Core/DataDisplay/List'
 
 interface Props {
@@ -29,7 +29,7 @@ export class DataList extends Component<Props> {
         M.toggleLoader(loaderRoot)
 
         return new List({
-            children: listElements.filter(el => !!el) as Component<any>[],
+            children: listElements.filter(el => !!el) as Component<ListItemProps>[],
             className: 'DataList',
         }).render()
     }

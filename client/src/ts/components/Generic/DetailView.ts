@@ -15,6 +15,11 @@ interface Props {
     id: string
 }
 
+interface StorageObject {
+    [key: string]: string | string[] | number
+    id: string
+}
+
 export class DetailView {
     constructor(private props: Props) {
         const { host } = props
@@ -33,7 +38,7 @@ export class DetailView {
             if (!existingStorageData || existingStorageData.length === 0) {
                 this.onDataNotStored(id, localStorageService)
             } else {
-                const currentPageData = existingStorageData.find((result: any) => result.id === id)
+                const currentPageData = existingStorageData.find((storageObject: StorageObject) => storageObject.id === id)
 
                 if (!currentPageData) {
                     this.onDataNotStored(id, localStorageService)

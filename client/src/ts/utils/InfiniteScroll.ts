@@ -1,6 +1,6 @@
 interface InfiniteScrollProps {
     root: string | HTMLElement | null | Element
-    onLoadMore: () => Promise<any>
+    onLoadMore: () => Promise<void>
     pageSize: number
 }
 

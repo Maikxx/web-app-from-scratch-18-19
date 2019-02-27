@@ -2,10 +2,10 @@ import { Component, DefaultProps } from '../../../utils/Component'
 import { M } from '../../../utils/Engine'
 import { Transformer } from '../../../utils/Transformer'
 
-interface Props extends DefaultProps<Props> {}
+export interface ListItemProps extends DefaultProps<ListItemProps> {}
 
-export class ListItem extends Component<Props> {
-    constructor(private props: Props) {
+export class ListItem extends Component<ListItemProps> {
+    constructor(private props: ListItemProps) {
         super(props)
     }
 
