@@ -4,11 +4,11 @@ A Game of Thrones inspired application which allows the user to explore relation
 
 Characters overview page | Character detail page
 :-------------------------:|:-------------------------:
-![](docs/assets/characters.png) | ![](docs/assets/character.png)
+![Characters overview page](docs/assets/characters.png) | ![Characters detail page](docs/assets/character.png)
 
 House detail page | Book detail page
 :-------------------------:|:-------------------------:
-![](docs/assets/house.png) | ![](docs/assets/book.png)
+![House detail page](docs/assets/house.png) | ![Book detail page](docs/assets/book.png)
 
 ## Table of Contents
 
