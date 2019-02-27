@@ -19,10 +19,12 @@ House detail page | Book detail page
 3. [Actor flow](#actor-flow)
     1. [Version 1](#actor-flow-version-1)
     2. [Version 2](#actor-flow-version-2)
-    2. [Version 3](#actor-flow-version-3)
+    3. [Version 3](#actor-flow-version-3)
+    4. [Version 4](#actor-flow-version-4)
 4. [Interaction diagram](#interaction-diagram)
     1. [Version 1](#interaction-diagram-version-1)
     2. [Version 2](#interaction-diagram-version-2)
+    3. [Version 3](#interaction-diagram-version-3)
 5. [Features 🔥](#features)
     1. [Features required by this course ✅](#features-required-by-this-course)
         1. [Week 1](#week-1)
@@ -93,7 +95,14 @@ To build the client run: `yarn build-client` or `npm run build-client`.
 
 ### Interaction diagram version 2
 
-![Second iteration of the interaction diagram](docs/assets/interaction-diagram-2.png)
+<details>
+    <summary>Click here to see the second version</summary>
+    <img src="docs/assets/interaction-diagram-2.png">
+</details>
+
+### Interaction diagram version 3
+
+![Third iteration of the interaction diagram](docs/assets/interaction-diagram-3.png)
 
 ## Features
 
