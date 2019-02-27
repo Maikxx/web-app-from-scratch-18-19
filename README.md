@@ -66,7 +66,10 @@ To build the client run: `yarn build-client` or `npm run build-client`.
 
 ### Actor flow version 2
 
-![Second iteration of the actor flow diagram](docs/assets/actor-flow2.png)
+<details>
+    <summary>Click here to see the first version</summary>
+    <img src="docs/assets/actor-flow2.png">
+</details>
 
 ### Actor flow version 3
 
