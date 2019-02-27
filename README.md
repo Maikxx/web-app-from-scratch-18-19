@@ -130,9 +130,12 @@ To build the client run: `yarn build-client` or `npm run build-client`.
 
 ## Patterns
 
+* The [constructor pattern](https://addyosmani.com/resources/essentialjsdesignpatterns/book/#constructorpatternjavascript) can be found throughout the application to instantiate from a JavaScript class.
+* The [module pattern](https://addyosmani.com/resources/essentialjsdesignpatterns/book/#modulepatternjavascript) can be found throughout the application to structure the TypeScript code and to prevent leakage of globals.
 * Factories
 * Private class data
 * Observer
+* The composite pattern is used to extends the base [Component](./client/src/ts/utils/Component.ts) class in the [Engine](./client/src/ts/utils/Engine.ts) I wrote.
 <!-- TODO improve this section -->
 
 ## Changelog
