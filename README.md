@@ -61,19 +61,26 @@ To build the client run: `yarn build-client` or `npm run build-client`.
 
 <details>
     <summary>Click here to see the first version</summary>
-    <img src="docs/assets/actor_flow.png">
+    <img src="docs/assets/actor-flow-1.png">
 </details>
 
 ### Actor flow version 2
 
 <details>
-    <summary>Click here to see the first version</summary>
-    <img src="docs/assets/actor-flow2.png">
+    <summary>Click here to see the second version</summary>
+    <img src="docs/assets/actor-flow-2.png">
 </details>
 
 ### Actor flow version 3
 
-![Third iteration of the actor flow diagram](docs/assets/actor-flow3.png)
+<details>
+    <summary>Click here to see the third version</summary>
+    <img src="docs/assets/actor-flow-3.png">
+</details>
+
+### Actor flow version 4
+
+![Fourth iteration of the actor flow diagram](docs/assets/actor-flow-4.png)
 
 ## Interaction diagram
 
@@ -81,12 +88,12 @@ To build the client run: `yarn build-client` or `npm run build-client`.
 
 <details>
     <summary>Click here to see the first version</summary>
-    <img src="docs/assets/interaction-diagram.png">
+    <img src="docs/assets/interaction-diagram-1.png">
 </details>
 
 ### Interaction diagram version 2
 
-![Second iteration of the interaction diagram](docs/assets/interaction-diagram2.png)
+![Second iteration of the interaction diagram](docs/assets/interaction-diagram-2.png)
 
 ## Features
 
