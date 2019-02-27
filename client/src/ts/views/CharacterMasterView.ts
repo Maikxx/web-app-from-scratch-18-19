@@ -147,7 +147,8 @@ export class CharacterMasterView {
             return
         }
 
-        list.innerHTML = ''
+        M.resetComponent(list)
+
         const buttons = this.getCharacterButtons(searchedCharacters)
         await Promise.all(buttons.map(button => {
             M.render(button, list)

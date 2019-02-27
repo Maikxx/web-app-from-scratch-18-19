@@ -56,7 +56,7 @@ export class M {
         }
     }
 
-    public static resetComponent(component: HTMLElement) {
+    public static resetComponent(component: HTMLElement | Element) {
         component.innerHTML = ''
     }
 
