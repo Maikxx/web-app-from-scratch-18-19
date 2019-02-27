@@ -7,8 +7,8 @@ interface Args {
 }
 
 export function handleCharacterDetailRoute(host: HTMLElement, router: Navigo) {
-    return function(args: Args) {
+    return function({ id }: Args) {
         M.resetComponent(host)
-        new CharacterDetailView({ host, id: args.id, router })
+        new CharacterDetailView({ host, id, router })
     }
 }

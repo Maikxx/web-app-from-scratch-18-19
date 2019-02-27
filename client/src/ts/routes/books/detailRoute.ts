@@ -7,8 +7,8 @@ interface Args {
 }
 
 export function handleBookDetailRoute(host: HTMLElement, router: Navigo) {
-    return function(args: Args) {
+    return function({ id }: Args) {
         M.resetComponent(host)
-        new BookDetailView({ host, id: args.id, router })
+        new BookDetailView({ host, id, router })
     }
 }
