@@ -1,3 +1,5 @@
+import { StorageObject } from '../types/Fetchers'
+
 export class LocalStorageService {
     public static housesKey = 'houses'
     public static charactersKey = 'characters'
@@ -42,5 +44,21 @@ export class LocalStorageService {
         } catch (error) {
             throw new Error(error)
         }
+    }
+
+    public getDataById(key: string, id: string): StorageObject | null {
+        const storedObjects = this.get(key)
+
+        if (!storedObjects || storedObjects.length === 0) {
+            return null
+        }
+
+        const match = storedObjects.find((object: StorageObject) => object.id === id)
+
+        if (!match) {
+            return null
+        }
+
+        return match
     }
 }

@@ -1,6 +1,6 @@
 import { PageHeader } from '../Chrome/PageHeader'
 import { DataList } from './DataList'
-import { DetailFetcherData } from '../../types/Fetchers'
+import { DetailFetcherData, StorageObject } from '../../types/Fetchers'
 import { Fetcher } from '../../utils/Fetcher'
 import Navigo from 'navigo'
 import { M } from '../../utils/Engine'
@@ -12,11 +12,6 @@ interface Props {
     host: HTMLElement
     router: Navigo
     localStorageKey: string
-    id: string
-}
-
-interface StorageObject {
-    [key: string]: string | string[] | number
     id: string
 }
 
@@ -67,7 +62,7 @@ export class DetailView {
 
         try {
             const data = await new Fetcher({ url }).fetch() as DetailFetcherData
-            const transformedData = Transformer.addIdToObject(id, data)
+            const transformedData = await this.getNestedData(Transformer.addIdToObject(id, data), localStorageService)
 
             this.renderWithData(transformedData)
 
@@ -75,6 +70,47 @@ export class DetailView {
         } catch (error) {
             console.error(error)
             throw new Error(error)
+        }
+    }
+
+    private async getNestedData(data: any, localStorageService: LocalStorageService) {
+        const dataWithNestedData = { ...data }
+
+        await Promise.all(Object.entries(data).map(async ([ key, value ]: any[]) => {
+            if (key === 'url') {
+                return
+            }
+
+            if (Array.isArray(value)) {
+                await Promise.all(value.map(async (v, i) => {
+                    if (v.includes('https://')) {
+                        const nestedData = await this.fetchNestedData(v, localStorageService)
+                        dataWithNestedData[key][i] = nestedData
+                    }
+                }))
+            } else if (String(value).includes('https://')) {
+                const nestedData = await this.fetchNestedData(value, localStorageService)
+                dataWithNestedData[key] = nestedData
+            }
+        }))
+
+        return dataWithNestedData
+    }
+
+    private async fetchNestedData(value: string, localStorageService: LocalStorageService) {
+        const [ id, pathAsKey ] = value.split('/').reverse()
+        const existingData = localStorageService.getDataById(pathAsKey, id)
+
+        if (!existingData) {
+            const [ id, pathAsKey ] = value.split('/').reverse()
+            const url = `https://anapioficeandfire.com/api/${pathAsKey}/${id}`
+            const data = await new Fetcher({ url }).fetch() as DetailFetcherData
+
+            localStorageService.merge(pathAsKey, data)
+
+            return data
+        } else {
+            return existingData
         }
     }
 }

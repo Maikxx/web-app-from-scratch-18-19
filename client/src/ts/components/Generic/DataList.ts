@@ -1,6 +1,5 @@
 import { translatedTypes } from '../../translations/translatedTypes'
 import { DetailFetcherData } from '../../types/Fetchers'
-import { Fetcher } from '../../utils/Fetcher'
 import Navigo from 'navigo'
 import { Validator } from '../../utils/Validator'
 import { M } from '../../utils/Engine'
@@ -26,12 +25,20 @@ export class DataList extends Component<Props> {
     public render = async () => {
         const { data, loaderRoot } = this.props
         const listElements = await Promise.all(Object.entries(data).map(this.createListElement))
+
         M.toggleLoader(loaderRoot)
 
         return new List({
             children: listElements.filter(el => !!el) as Component<ListItemProps>[],
             className: 'DataList',
         }).render()
+    }
+
+    private shouldHideProperty = (key: string, value: string | string[] | number) => {
+        return !value
+            || (typeof value !== 'number' && value.length === 0)
+            || (Array.isArray(value) && !value[0])
+            || (key === 'url' || key === 'name' || key === 'id')
     }
 
     private createListElement = async ([ key, value ]: [string, string | string[] | number]) => {
@@ -57,61 +64,40 @@ export class DataList extends Component<Props> {
         })
     }
 
-    private shouldHideProperty = (key: string, value: string | string[] | number) => {
-        return !value
-            || (typeof value !== 'number' && value.length === 0)
-            || (Array.isArray(value) && !value[0])
-            || key === 'url' || key === 'name' || key === 'id'
-    }
-
     private getDataContent = async (value: string | string[] | number) => {
         if (Array.isArray(value)) {
-            return Promise.all(value.map(this.getContentValue))
+            return value.map(this.getContentValue)
         } else {
             return this.getContentValue(value)
         }
     }
 
-    private getContentValue = async (value: string | number) => {
-        try {
-            if (typeof value !== 'number' && value.includes('https://')) {
-                const data = await new Fetcher({ url: value }).fetch() as DetailFetcherData
-
-                return new Button({
-                    onClick: this.handleLinkClick(data),
-                    className: 'Link',
-                    children: [data.name],
-                })
-            } else {
-                if (typeof value !== 'number') {
-                    if (Validator.validateDate(value)) {
-                        return this.renderItemContentText(new Date(value).toLocaleDateString())
-                    } else {
-                        return this.renderItemContentText(value)
-                    }
-                } else {
-                    return this.renderItemContentText(String(value))
-                }
-            }
-        } catch (error) {
-            console.error(error)
-            throw new Error(error)
-        }
-    }
-
-    private renderItemContentText = (content: string) => {
-        return new Paragraph({
-            className: 'DataList__item-content-text',
-            children: [content],
-        })
-    }
-
-    private handleLinkClick = (data: DetailFetcherData) => {
+    private getContentValue = (value: string | number | any) => {
         const { router } = this.props
 
-        return function() {
-            const [ id, path ] = data.url.split('/').reverse()
-            router.navigate(`/${path}/${id}`)
+        if (typeof value !== 'number' && Validator.isObject(value)) {
+            return new Button({
+                onClick: () => {
+                    const [ id, path ] = value.url.split('/').reverse()
+                    router.navigate(`/${path}/${id}`)
+                },
+                className: 'Link',
+                children: [value.name],
+            })
+        } else {
+            let content
+            if (typeof value !== 'number') {
+                content = Validator.validateDate(value)
+                    ? new Date(value).toLocaleDateString()
+                    : value
+            } else {
+                content = String(value)
+            }
+
+            return new Paragraph({
+                className: 'DataList__item-content-text',
+                children: [content],
+            })
         }
     }
 }
