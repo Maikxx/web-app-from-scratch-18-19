@@ -29,6 +29,7 @@ House detail page | Book detail page
 5. [Features 🔥](#features)
     1. [Features required by this course ✅](#features-required-by-this-course)
         1. [Week 1](#week-1)
+            1. [Legacy router](#legacy-router)
         2. [Week 2](#week-2)
         3. [Week 3](#week-3)
     2. [Features beyond the scope of this course 🚀🌔](#features-beyond-the-scope-of-this-course)
@@ -124,6 +125,120 @@ To build the client run: `yarn build-client` or `npm run build-client`.
 - [X] Render a [list of data](./client/src/ts/components/Generic/DataList.ts) from an API 🐒.
 - [X] Created multiple issues in the repository of [Chelsea Doeleman](https://github.com/chelseadoeleman/web-app-from-scratch-18-19) and generally helped a lot of people during this course.
 
+##### Legacy router
+
+I also built (the start of) my own router, which works, but not when publishing it on Netlify, because it does not make use of hashes like the router I now use does.
+
+<details>
+    <summary>Click here to see the third version</summary>
+    ```js
+        import { Validator } from './Validator'
+        export interface Route {
+            regex: any
+            resolver: (args?: any) => void
+        }
+
+        export interface RouterOptions {
+            base?: string
+        }
+
+        export class Router {
+            public routes: Route[] = []
+            public base: string
+            public interval: NodeJS.Timeout
+
+            constructor(options?: RouterOptions) {
+                this.base = options && options.base
+                    ? `/${this.trimUrl(options.base)}/`
+                    : `/`
+            }
+
+            public getPath() {
+                let path = ''
+
+                try {
+                    path = this.getPathFromUrl()
+                } catch (error) {
+                    console.error(error)
+                    throw new Error(error)
+                }
+
+                path = this.base !== '/'
+                    ? path.replace(this.base, '')
+                    : path
+
+                return this.trimUrl(path)
+            }
+
+            public trimUrl(url: string) {
+                return url
+                    .replace(/^\//, '')
+                    .replace(/\/$/, '')
+            }
+
+            public addRoute(regex: any, resolver: any) {
+                if (Validator.isTypeOf(regex, 'function')) {
+                    resolver = regex
+                    regex = ''
+                }
+
+                this.routes.push({ regex, resolver })
+            }
+
+            public removeRoute(indicator: any) {
+                const urlIndex = this.routes.findIndex(({ regex, resolver }) => {
+                    return resolver === indicator || regex.toString() === indicator.toString()
+                })
+                this.routes.splice(urlIndex, 1)
+            }
+
+            public reset() {
+                this.routes = []
+                this.base = '/'
+            }
+
+            public getPathFromUrl() {
+                return this.trimUrl(decodeURI(`${location.pathname}${location.search}`))
+                    .replace(/\?(.*)$/, '')
+            }
+
+            public check(defaultPath?: string) {
+                const path = defaultPath || this.getPath()
+
+                this.routes.forEach(route => {
+                    const match = path.match(route.regex)
+
+                    if (match) {
+                        match.shift()
+                        route.resolver.apply({}, match)
+                    }
+                })
+            }
+
+            public watch() {
+                let currentPath = this.getPath()
+
+                const checker = () => {
+                    if (currentPath !== this.getPath()) {
+                        currentPath = this.getPath()
+                        this.check(currentPath)
+                    }
+                }
+
+                clearInterval(this.interval)
+                this.interval = setInterval(checker, 50)
+            }
+
+            public redirect(path: string = '') {
+                const url = `${this.base}${this.trimUrl(path)}`
+                history.pushState(null, url, url)
+            }
+}
+    ```
+</details>
+
+The code for this can be found here.
+
 #### Week 2
 
 - [X] Create an actor diagram.
@@ -157,7 +272,7 @@ To build the client run: `yarn build-client` or `npm run build-client`.
 * [Babel polyfill](https://www.npmjs.com/package/babel-polyfill).
 * [BabelJS](https://babeljs.io).
 * [Concurrently](https://www.npmjs.com/package/concurrently).
-* [Navigo](https://github.com/krasimir/navigo) - A router on which I based my initial [Router](./client/src/ts/utils/Router.ts), which I now no longer use, but just keep for when I might want to continue with this.
+* [Navigo](https://github.com/krasimir/navigo) - A router on which I based my initial [Router](#legacy-router), which I now no longer use.
 * [ParcelJS](https://parceljs.org).
 * [TypeScript](https://www.typescriptlang.org).
 * [Wait-on](https://www.npmjs.com/package/wait-on).
