@@ -1,6 +1,7 @@
 import { Loader } from '../components/Core/Feedback/Loader'
 import { Component } from './Component'
 import { Validator } from './Validator'
+import { ALLOWED_TAGS_PER_ATTRIBUTE } from '../translations/attributeTagPairs'
 
 export class M {
     public static async render(component: HTMLElement | string | Component<any> | Element, host: HTMLElement | Element) {
@@ -50,7 +51,7 @@ export class M {
             } else if (attribute.includes('className')) {
                 _node.setAttribute('class', attributeValue)
             } else {
-                Validator.validateAttribute(attribute, _node.tagName)
+                M.validateAttribute(attribute, _node.tagName)
                 _node.setAttribute(attribute, attributeValue)
             }
         }
@@ -73,5 +74,22 @@ export class M {
         return (className && className.length > 0)
             ? `${baseClassNames} ${className}`
             : baseClassNames
+    }
+
+    public static validateAttribute(attribute: any, tagName: string) {
+        const currentAttribute = ALLOWED_TAGS_PER_ATTRIBUTE.find(({ attr }) => {
+            return attr === attribute
+        })
+
+        if (!currentAttribute) {
+            throw new Error(`
+                You have either passed an invalid property called: ${attribute},${` `}
+                or you have forgotten to handle this custom property.
+            `)
+        } else if (Array.isArray(currentAttribute.tags) && !currentAttribute.tags.includes(tagName.toLowerCase())) {
+            throw new Error(`
+                You have passed an invalid property called: ${attribute} to ${tagName}.
+            `)
+        }
     }
 }
