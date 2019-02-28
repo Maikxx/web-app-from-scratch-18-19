@@ -9,6 +9,7 @@ import { M } from '../utils/Engine'
 import { Filter } from '../utils/Filter'
 import { InfiniteScroll } from '../utils/InfiniteScroll'
 import { List } from '../components/Core/DataDisplay/List'
+import { ListItem } from '../components/Core/DataDisplay/ListItem'
 
 interface Props {
     host: HTMLElement
@@ -79,6 +80,10 @@ export class CharacterMasterView {
 
         if (!list) {
             return
+        }
+
+        if (!buttons || buttons.length === 0) {
+            M.render(new ListItem({ children: ['No characters were found!'] }), list)
         }
 
         buttons.forEach(button => {

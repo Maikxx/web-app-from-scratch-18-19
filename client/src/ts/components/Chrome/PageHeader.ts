@@ -31,7 +31,11 @@ export class PageHeader extends Component<Props> {
                     children: [title],
                 }),
                 ...(onSearch
-                    ? [new Search({ onSearch, className: 'PageHeader__search' })]
+                    ? [new Search({
+                        onSearch,
+                        className: 'PageHeader__search',
+                        placeholder: 'Search for character (use exact name)',
+                    })]
                     : []
                 ),
             ],
