@@ -1,6 +1,6 @@
 .InfiniteScrollList {
     overflow: auto;
-    height: 90vh;
+    height: 85vh;
     list-style: none;
     display: flex;
     margin-top: 12px;
