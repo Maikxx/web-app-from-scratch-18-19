@@ -27,26 +27,27 @@ export class Transformer {
     }
 
     public static deepCleanArray(subject: any[]): any {
-        return subject.map(item => {
-            if (Validator.isTruthyArray(item)) {
-                return Transformer.deepCleanArray(item)
-            }
+        return subject
+            .map(item => {
+                if (Validator.isTruthyArray(item)) {
+                    return Transformer.deepCleanArray(item)
+                }
 
-            if (Validator.isObject(item)) {
-                return Transformer.deepCleanObject(item)
-            }
+                if (Validator.isObject(item)) {
+                    return Transformer.deepCleanObject(item)
+                }
 
-            if ((!Array.isArray(item) && item) || Validator.isTypeOf(item, 'number')) {
-                return item
-            }
-        })
+                if ((!Array.isArray(item) && item) || Validator.isTypeOf(item, 'number')) {
+                    return item
+                }
+            })
+            .filter(item => !!item)
     }
 
     public static deepCleanObject(subject: Object) {
-        const newObj = {}
-
-        Object.keys(subject).forEach(property => {
+        return Object.keys(subject).reduce((newObj, property) => {
             const value = subject[property]
+
             if (Validator.isTruthyArray(value)) {
                 const cleanedArray = Transformer.deepCleanArray(value)
 
@@ -66,8 +67,8 @@ export class Transformer {
             if ((!Array.isArray(value) && value) || Validator.isTypeOf(value, 'number')) {
                 newObj[property] = value
             }
-        })
 
-        return newObj
+            return newObj
+        }, {})
     }
 }
