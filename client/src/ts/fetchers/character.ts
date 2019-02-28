@@ -1,8 +1,7 @@
 import { Fetcher } from '../utils/Fetcher'
 
 export async function fetchCharacters(pageSize: number = 50, pageNumber: number = 1, searchText?: string) {
-    const urlRoot = `https://anapioficeandfire.com/api/`
-    const characterUrlRoot = `${urlRoot}/characters`
+    const characterUrlRoot = `${Fetcher.API_OF_FIRE_AND_ICE_URL_BASE}/characters`
     const searchParam = searchText && searchText.length > 0
         ? `&name=${searchText}`
         : ''

@@ -58,13 +58,12 @@ export class DetailView {
 
     private async onDataNotStored(id: string, localStorageService: LocalStorageService) {
         const { localStorageKey } = this.props
-        const url = `https://anapioficeandfire.com/api/${localStorageKey}/${id}`
+        const url = `${Fetcher.API_OF_FIRE_AND_ICE_URL_BASE}/${localStorageKey}/${id}`
 
         try {
             const data = await new Fetcher({ url }).fetch() as DetailFetcherData
             const dataWithNestedData = await this.getNestedData(Transformer.addIdToObject(id, data), localStorageService)
             const transformedData = Transformer.deepCleanObject(dataWithNestedData)
-            console.log(transformedData)
 
             this.renderWithData(transformedData)
 
@@ -106,7 +105,7 @@ export class DetailView {
         try {
             if (!existingData) {
                 const [ id, pathAsKey ] = value.split('/').reverse()
-                const url = `https://anapioficeandfire.com/api/${pathAsKey}/${id}`
+                const url = `${Fetcher.API_OF_FIRE_AND_ICE_URL_BASE}/${pathAsKey}/${id}`
                 const data = await new Fetcher({ url }).fetch() as DetailFetcherData
                 const transformedData = Transformer.deepCleanObject(data)
 

@@ -4,6 +4,8 @@ export interface FetcherProps {
 }
 
 export class Fetcher {
+    public static API_OF_FIRE_AND_ICE_URL_BASE = `https://cors-anywhere.herokuapp.com/https://anapioficeandfire.com/api`
+
     constructor(private props: FetcherProps) {}
 
     public async fetch() {
