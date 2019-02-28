@@ -18,8 +18,6 @@ export class App {
         const router = new Navigo(null, true, '#')
 
         if (!mainElement) {
-            handleErrorRoute(mainElement, router)
-
             throw new Error(`
                 Root element not found in the document.${` `}
                 You might have forgotten to change the root element or it is not yet loaded.
