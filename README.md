@@ -104,7 +104,7 @@ To build the client run: `yarn build-client` or `npm run build-client`.
 ### Interaction diagram version 3
 
 <details>
-    <summary>Click here to see the second version</summary>
+    <summary>Click here to see the third version</summary>
     <img src="docs/assets/interaction-diagram-3.png" alt="Third iteration of the interaction diagram">
 </details>
 
