@@ -18,7 +18,7 @@ button {
 @import './components/Chrome/PageHeader.css';
 @import './components/Chrome/ErrorPage.css';
 @import './components/Generic/DataList.css';
-@import './components/Generic/Link.css';
-@import './components/Generic/Search.css';
-@import './components/Generic/Loader.css';
-@import './components/Generic/InfiniteScroll.css';
+@import './components/Core/Link.css';
+@import './components/Core/Search.css';
+@import './components/Core/Loader.css';
+@import './components/Core/InfiniteScroll.css';
