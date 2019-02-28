@@ -130,8 +130,8 @@ To build the client run: `yarn build-client` or `npm run build-client`.
 I also built (the start of) my own router, which works, but not when publishing it on Netlify, because it does not make use of hashes like the router I now use does.
 
 <details>
-    <summary>Click here to see the third version</summary>
-    ```js
+    <summary>The code for this can be found here</summary>
+    ```
         import { Validator } from './Validator'
         export interface Route {
             regex: any
@@ -236,8 +236,6 @@ I also built (the start of) my own router, which works, but not when publishing 
 }
     ```
 </details>
-
-The code for this can be found here.
 
 #### Week 2
 
