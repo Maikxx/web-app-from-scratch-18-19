@@ -25,6 +25,7 @@ House detail page | Book detail page
     1. [Version 1](#interaction-diagram-version-1)
     2. [Version 2](#interaction-diagram-version-2)
     3. [Version 3](#interaction-diagram-version-3)
+    3. [Version 4](#interaction-diagram-version-4)
 5. [Features 🔥](#features)
     1. [Features required by this course ✅](#features-required-by-this-course)
         1. [Week 1](#week-1)
@@ -63,21 +64,21 @@ To build the client run: `yarn build-client` or `npm run build-client`.
 
 <details>
     <summary>Click here to see the first version</summary>
-    <img src="docs/assets/actor-flow-1.png">
+    <img src="docs/assets/actor-flow-1.png" alt="First iteration of the actor flow">
 </details>
 
 ### Actor flow version 2
 
 <details>
     <summary>Click here to see the second version</summary>
-    <img src="docs/assets/actor-flow-2.png">
+    <img src="docs/assets/actor-flow-2.png" alt="Second iteration of the actor flow">
 </details>
 
 ### Actor flow version 3
 
 <details>
     <summary>Click here to see the third version</summary>
-    <img src="docs/assets/actor-flow-3.png">
+    <img src="docs/assets/actor-flow-3.png" alt="Third iteration of the actor flow">
 </details>
 
 ### Actor flow version 4
@@ -90,19 +91,26 @@ To build the client run: `yarn build-client` or `npm run build-client`.
 
 <details>
     <summary>Click here to see the first version</summary>
-    <img src="docs/assets/interaction-diagram-1.png">
+    <img src="docs/assets/interaction-diagram-1.png" alt="First iteration of the interaction diagram">
 </details>
 
 ### Interaction diagram version 2
 
 <details>
     <summary>Click here to see the second version</summary>
-    <img src="docs/assets/interaction-diagram-2.png">
+    <img src="docs/assets/interaction-diagram-2.png" alt="Second iteration of the interaction diagram">
 </details>
 
 ### Interaction diagram version 3
 
-![Third iteration of the interaction diagram](docs/assets/interaction-diagram-3.png)
+<details>
+    <summary>Click here to see the second version</summary>
+    <img src="docs/assets/interaction-diagram-3.png" alt="Third iteration of the interaction diagram">
+</details>
+
+### Interaction diagram version 4
+
+![Fourth iteration of the interaction diagram](docs/assets/interaction-diagram-4.png)
 
 ## Features
 
