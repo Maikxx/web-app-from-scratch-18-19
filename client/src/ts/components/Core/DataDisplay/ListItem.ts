@@ -1,6 +1,5 @@
 import { Component, DefaultProps } from '../../../utils/Component'
 import { M } from '../../../utils/Engine'
-import { Transformer } from '../../../utils/Transformer'
 
 export interface ListItemProps extends DefaultProps<ListItemProps> {}
 
@@ -22,6 +21,6 @@ export class ListItem extends Component<ListItemProps> {
     private getClassNames() {
         const { className } = this.props
 
-        return Transformer.getClassName('ListItem', className)
+        return M.getClassName('ListItem', className)
     }
 }

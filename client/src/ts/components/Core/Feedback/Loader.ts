@@ -1,6 +1,5 @@
 import { M } from '../../../utils/Engine'
 import { Component } from '../../../utils/Component'
-import { Transformer } from '../../../utils/Transformer'
 
 interface Props {
     className?: string
@@ -18,6 +17,6 @@ export class Loader extends Component<Props> {
     private getClassNames() {
         const { className } = this.props
 
-        return Transformer.getClassName('Loader', className)
+        return M.getClassName('Loader', className)
     }
 }

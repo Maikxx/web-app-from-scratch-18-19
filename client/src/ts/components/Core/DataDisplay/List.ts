@@ -1,6 +1,5 @@
 import { Component, DefaultProps } from '../../../utils/Component'
 import { M } from '../../../utils/Engine'
-import { Transformer } from '../../../utils/Transformer'
 
 interface Props extends DefaultProps<Props> {
     isOrdered?: boolean
@@ -32,6 +31,6 @@ export class List extends Component<Props> {
     private getClassNames() {
         const { className } = this.props
 
-        return Transformer.getClassName('List', className)
+        return M.getClassName('List', className)
     }
 }

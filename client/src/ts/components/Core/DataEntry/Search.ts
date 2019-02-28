@@ -1,6 +1,5 @@
 import { Component } from '../../../utils/Component'
 import { M } from '../../../utils/Engine'
-import { Transformer } from '../../../utils/Transformer'
 
 interface Props {
     className?: string
@@ -37,6 +36,6 @@ export class Search extends Component<Props> {
     private getClassName() {
         const { className } = this.props
 
-        return Transformer.getClassName('Search', className)
+        return M.getClassName('Search', className)
     }
 }

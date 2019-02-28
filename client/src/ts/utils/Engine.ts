@@ -68,4 +68,10 @@ export class M {
             host.removeChild(loaderElement)
         }
     }
+
+    public static getClassName(baseClassNames: string, className?: string) {
+        return (className && className.length > 0)
+            ? `${baseClassNames} ${className}`
+            : baseClassNames
+    }
 }

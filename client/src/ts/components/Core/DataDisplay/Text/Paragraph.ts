@@ -1,6 +1,5 @@
 import { Component, DefaultProps } from '../../../../utils/Component'
 import { M } from '../../../../utils/Engine'
-import { Transformer } from '../../../../utils/Transformer'
 
 interface Props extends DefaultProps<Props> {}
 
@@ -20,6 +19,6 @@ export class Paragraph extends Component<Props> {
     private getClassNames() {
         const { className } = this.props
 
-        return Transformer.getClassName('Paragraph', className)
+        return M.getClassName('Paragraph', className)
     }
 }

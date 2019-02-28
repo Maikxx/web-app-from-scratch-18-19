@@ -1,6 +1,5 @@
 import { Component, DefaultProps } from '../../../../utils/Component'
 import { M } from '../../../../utils/Engine'
-import { Transformer } from '../../../../utils/Transformer'
 
 interface Props extends DefaultProps<Props> {
     level: number
@@ -22,7 +21,7 @@ export class Heading extends Component<Props> {
     private getClassNames() {
         const { className } = this.props
 
-        return Transformer.getClassName('Heading', className)
+        return M.getClassName('Heading', className)
     }
 
     private getComponentType() {
