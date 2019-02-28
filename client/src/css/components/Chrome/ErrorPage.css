@@ -1,0 +1,23 @@
+.ErrorPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.ErrorPage__text {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.ErrorPage__link {
+    margin-top: 2rem;
+    cursor: pointer;
+}
+
+.ErrorPage__link:hover {
+    text-decoration: underline;
+}

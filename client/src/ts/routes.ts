@@ -1,13 +1,16 @@
 export const routes = {
     index: '/',
     characters: {
-        index: '*',
-        detail: 'characters/:id',
+        index: '/',
+        detail: '/characters/:id',
     },
     houses: {
-        detail: 'houses/:id',
+        detail: '/houses/:id',
     },
     books: {
-        detail: 'books/:id',
+        detail: '/books/:id',
+    },
+    error: {
+        index: '/error',
     },
 }
