@@ -157,6 +157,7 @@ I also built (the start of) my own router, which works, but not when publishing 
 - [X] Data persistence on detail pages on revisit. (Data persistence on the paginated [master view](./client/src/ts/views/CharacterMasterView.ts) is another beast that is way more difficult, hence not included yet.)
 - [X] [Recursive data cleaning](./client/src/ts/utils/Transformer.ts).
 - [X] Has an [error page](./client/src/ts/components/Chrome/ErrorPage.ts).
+- [X] Unit testing.
 
 ## Technologies used
 
