@@ -1,6 +1,4 @@
 import 'babel-polyfill'
 import { App } from './App'
 
-(() => {
-    new App()
-})()
+new App()
